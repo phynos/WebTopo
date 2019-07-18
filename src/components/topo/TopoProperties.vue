@@ -1,11 +1,11 @@
 <template>
 <div class="topo-properties">
-    <div class="topo-editor-properties-tabs">
-        <div class="topo-editor-properties-tab" @click="changeTab(0)" :class="{'topo-editor-properties-tab-active': tabIndex == 0}">样式</div>
-        <div class="topo-editor-properties-tab" @click="changeTab(1)" :class="{'topo-editor-properties-tab-active': tabIndex == 1}">数据</div>
-        <div class="topo-editor-properties-tab" @click="changeTab(2)" :class="{'topo-editor-properties-tab-active': tabIndex == 2}">行为</div>
+    <div class="topo-properties-tabs">
+        <div class="topo-properties-tab" @click="changeTab(0)" :class="{'topo-properties-tab-active': tabIndex == 0}">样式</div>
+        <div class="topo-properties-tab" @click="changeTab(1)" :class="{'topo-properties-tab-active': tabIndex == 1}">数据</div>
+        <div class="topo-properties-tab" @click="changeTab(2)" :class="{'topo-properties-tab-active': tabIndex == 2}">行为</div>
     </div>
-    <div class="topo-editor-properties-table">
+    <div class="topo-properties-table">
         <div v-show="tabIndex == 0">
             <template v-if="configObject != null && isLayer == false">
                 <table style="display: none">
@@ -269,12 +269,12 @@ export default {
     background-color: white;
     height: 100%;
 
-    .topo-editor-properties-tabs {
+    .topo-properties-tabs {
         height: 35px;
         display: flex;
         border-bottom: #ccc solid 1px;
 
-        .topo-editor-properties-tab {
+        .topo-properties-tab {
             height: 35px;
             text-align: center;
             line-height: 35px;
@@ -282,21 +282,21 @@ export default {
             background-color: white;
         }
 
-        .topo-editor-properties-tab+.topo-editor-properties-tab {
+        .topo-properties-tab+.topo-properties-tab {
             border-left: #ccc solid 1px;
         }
 
-        .topo-editor-properties-tab:hover {
+        .topo-properties-tab:hover {
             cursor: pointer;
             opacity: 0.8;
         }
 
-        .topo-editor-properties-tab-active {
+        .topo-properties-tab-active {
             background-color: #ddd;
         }
     }
 
-    .topo-editor-properties-table {
+    .topo-properties-table {
         overflow-x: hidden;
         overflow-y: auto;
         height: calc(100% - 36px);
