@@ -20,25 +20,25 @@
                             <tr>
                                 <td width="50%">X</td>
                                 <td width="50%">
-                                    <q-input type="number" suffix="px" :value="configObject.style.position.x" @change="val => { configObject.style.position.x = val }" style="padding-right:5px;" />
+                                    <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.x" style="padding-right:5px;" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>Y</td>
                                 <td>
-                                    <q-input type="number" suffix="px" :value="configObject.style.position.y" @change="val => { configObject.style.position.y = val }" style="padding-right:5px;" />
+                                    <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.y" style="padding-right:5px;" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>W</td>
                                 <td>
-                                    <q-input type="number" suffix="px" :value="configObject.style.position.w" @change="val => { configObject.style.position.w = val }" style="padding-right:5px;" />
+                                    <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.w" style="padding-right:5px;" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>H</td>
                                 <td>
-                                    <q-input type="number" suffix="px" :value="configObject.style.position.h" @change="val => { configObject.style.position.h = val }" style="padding-right:5px;" />
+                                    <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.h" style="padding-right:5px;" />
                                 </td>
                             </tr>
                         </table>
@@ -49,7 +49,7 @@
                             <tr>
                                 <td width="50%">BorderWidth</td>
                                 <td width="50%">
-                                    <q-input type="number" suffix="px" style="padding-right:5px;" :value="configObject.style.borderWidth" @change="val => { configObject.style.borderWidth = val }" />
+                                    <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.borderWidth" />
                                 </td>
                             </tr>
                             <tr>
@@ -84,13 +84,13 @@
                             <tr>
                                 <td width="50%">z-index</td>
                                 <td width="50%">
-                                    <q-input type="number" :value="configObject.style.zIndex" @change="val => { configObject.style.zIndex = val }" />
+                                    <q-input type="number" v-model.lazy="configObject.style.zIndex" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>Rolate</td>
                                 <td>
-                                    <q-input type="number" suffix="deg" style="padding-right:5px;" :value="configObject.style.transform" @change="val => { configObject.style.transform = val }" />
+                                    <q-input type="number" v-model.lazy="configObject.style.transform" suffix="deg" style="padding-right:5px;" />
                                 </td>
                             </tr>
                             <tr>
@@ -114,13 +114,13 @@
                             <tr v-if="configObject.style.url != undefined && configObject.style.url != null">
                                 <td>URL</td>
                                 <td>
-                                    <q-input :value="configObject.style.url" @change="val => { configObject.style.url = val }" />
+                                    <q-input v-model.lazy="configObject.style.url" />
                                 </td>
                             </tr>
                             <tr v-if="configObject.style.text != undefined">
                                 <td>Text</td>
                                 <td>
-                                    <q-input :value="configObject.style.text" @change="val => { configObject.style.text = val }" />
+                                    <q-input v-model.lazy="configObject.style.text" />
                                 </td>
                             </tr>
                             <tr v-if="configObject.style.textAlign != undefined">
@@ -156,19 +156,19 @@
                             <tr v-if="configObject.style.fontSize != undefined">
                                 <td>Font Size</td>
                                 <td>
-                                    <q-input type="number" suffix="px" style="padding-right:5px;" :value="configObject.style.fontSize" @change="val => { configObject.style.fontSize = val }" />
+                                    <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.fontSize" />
                                 </td>
                             </tr>
                             <tr v-if="configObject.style.radius != undefined">
                                 <td>Radius</td>
                                 <td>
-                                    <q-input type="number" :value="configObject.style.radius" @change="val => { configObject.style.radius = val }" />
+                                    <q-input type="number" v-model.lazy="configObject.style.radius" />
                                 </td>
                             </tr>
                             <tr v-if="configObject.style.lineWidth != undefined">
                                 <td>LineWidth</td>
                                 <td>
-                                    <q-input type="number" suffix="px" style="padding-right:5px;" :value="configObject.style.lineWidth" @change="val => { configObject.style.lineWidth = val }" />
+                                    <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.lineWidth" />
                                 </td>
                             </tr>
                         </table>

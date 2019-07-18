@@ -48,3 +48,6 @@ $ quasar dev -m cordova -T [android|ios] -t [mat|ios]
 $ quasar dev -m electron
 ### 使用iOS主题...
 $ quasar dev -m electron -t ios
+
+## 运行截图
+![avatar](shot.png)
