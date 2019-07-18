@@ -1,5 +1,5 @@
 ## WEB组态
-本项目为配套SpringCloud的前端工程，基于vue+quasar构建
+基于vue+quasar的web组态，核心代码基于vue，quasar仅仅是为了方便构建
 
 ## 功能清单
 | 功能 | 状态 | 
