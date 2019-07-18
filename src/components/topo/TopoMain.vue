@@ -312,6 +312,20 @@ export default {
             component.style.position.y += 25;
             this.addItem(component);
         },
+        removeItem(index,component) { //移除组件
+            var keys = [];
+            for(var key in this.edit.selectedComponent) {
+                keys.push(key);
+            }
+            //排序
+            keys.sort((a,b) =>{ return a-b;});
+            //逆向循环删除
+            for(var i = keys.length - 1; i >= 0; i--) {
+                this.configData.components.splice(keys[i],1);
+            }
+            //删除后默认选择顶级节点
+            this.clickItem(null, -1);    
+        },
     }
 }
 </script>
