@@ -74,9 +74,11 @@ module.exports = function (ctx) {
         'QSelect',
         'QInput',
         'QColor',
+        'QPopupProxy'
       ],
       directives: [
-        'Ripple'
+        'Ripple',
+        'ClosePopup'
       ],
       // Quasar plugins
       plugins: [

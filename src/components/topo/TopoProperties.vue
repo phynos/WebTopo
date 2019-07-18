@@ -60,8 +60,20 @@
                             </tr>
                             <tr>
                                 <td>BorderColor</td>
-                                <td :style="{background: configObject.style.borderColor}">
-                                    <q-color format-model="hexa" :value="configObject.style.borderColor" @change="val => { configObject.style.borderColor = val }" />
+                                <td>
+                                    <q-input
+                                        filled
+                                        v-model="configObject.style.borderColor"
+                                        class="my-input"
+                                    >
+                                        <template v-slot:append>
+                                        <q-icon name="colorize" class="cursor-pointer">
+                                            <q-popup-proxy transition-show="scale" transition-hide="scale">
+                                            <q-color v-model="configObject.style.borderColor" />
+                                            </q-popup-proxy>
+                                        </q-icon>
+                                        </template>
+                                    </q-input>
                                 </td>
                             </tr>
                         </table>
@@ -83,9 +95,20 @@
                             </tr>
                             <tr>
                                 <td>BackColor</td>
-                                <td :style="{background: configObject.style.backColor}">
-                                    <q-color format-model="hexa" :value="configObject.style.backColor" @change="val => { configObject.style.backColor = val }" />
-                                    <!-- <q-input v-model="configObject.style.backColor" readonly /> -->
+                                <td>
+                                    <q-input
+                                        filled
+                                        v-model="configObject.style.backColor"
+                                        class="my-input"
+                                    >
+                                        <template v-slot:append>
+                                        <q-icon name="colorize" class="cursor-pointer">
+                                            <q-popup-proxy transition-show="scale" transition-hide="scale">
+                                            <q-color v-model="configObject.style.backColor" />
+                                            </q-popup-proxy>
+                                        </q-icon>
+                                        </template>
+                                    </q-input>
                                 </td>
                             </tr>
                             <tr v-if="configObject.style.url != undefined && configObject.style.url != null">
@@ -108,8 +131,20 @@
                             </tr>
                             <tr>
                                 <td>ForeColor</td>
-                                <td :style="{background: configObject.style.foreColor}">
-                                    <q-color format-model="hexa" :value="configObject.style.foreColor" @change="val => { configObject.style.foreColor = val }" />
+                                <td>
+                                    <q-input
+                                        filled
+                                        v-model="configObject.style.foreColor"
+                                        class="my-input"
+                                    >
+                                        <template v-slot:append>
+                                        <q-icon name="colorize" class="cursor-pointer">
+                                            <q-popup-proxy transition-show="scale" transition-hide="scale">
+                                            <q-color v-model="configObject.style.foreColor" />
+                                            </q-popup-proxy>
+                                        </q-icon>
+                                        </template>
+                                    </q-input>
                                 </td>
                             </tr>
                             <tr v-if="configObject.style.fontFamily != undefined">
