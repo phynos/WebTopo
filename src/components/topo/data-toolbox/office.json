@@ -1,0 +1,198 @@
+{
+    "title": "Office Image1",
+    "icon": "home",
+    "opened": false,
+    "items": [{
+        "text": "花盘",
+        "icon": "statics/topo/office/embellish1.png",
+        "info": {
+            "type": "image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 42,
+                    "h": 42
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/office/embellish1.png"
+            }
+        }
+    }, {
+        "text": "椅子",
+        "icon": "statics/topo/office/chair1.png",
+        "info": {
+            "type": "image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 205,
+                    "h": 115
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/office/chair1.png"
+            }
+        }
+    }, {
+        "text": "办公桌",
+        "icon": "statics/topo/office/desk1.png",
+        "info": {
+            "type": "image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 305,
+                    "h": 157
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/office/desk1.png"
+            }
+        }
+    }, {
+        "text": "办公桌",
+        "icon": "statics/topo/office/desk2.png",
+        "info": {
+            "type": "image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 148,
+                    "h": 107
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/office/desk2.png"
+            }
+        }
+    }, {
+        "text": "办公桌",
+        "icon": "statics/topo/office/desk3.png",
+        "info": {
+            "type": "image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 162,
+                    "h": 232
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/office/desk3.png"
+            }
+        }
+    }, {
+        "text": "室内布局",
+        "icon": "statics/topo/office/wall1.png",
+        "info": {
+            "type": "image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 726,
+                    "h": 855
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/office/wall1.png"
+            }
+        }
+    }, {
+        "text": "柜子",
+        "icon": "statics/topo/office/cabinet1.png",
+        "info": {
+            "type": "image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 41,
+                    "h": 128
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/office/cabinet1.png"
+            }
+        }
+    }, {
+        "text": "柜子",
+        "icon": "statics/topo/office/cabinet2.png",
+        "info": {
+            "type": "image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 89,
+                    "h": 89
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/office/cabinet2.png"
+            }
+        }
+    }]
+}

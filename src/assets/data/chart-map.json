@@ -1,0 +1,128 @@
+{
+    "tooltip": {
+        "trigger": "item"
+    },
+    "dataRange": {
+        "min": 30,
+        "max": 700,
+        "splitNumber": 0,
+        "text": [
+            "高",
+            "低"
+        ],
+        "realtime": false,
+        "calculable": false,
+        "selectedMode": false,
+        "itemWidth": 10,
+        "itemHeight": 60,
+        "inRange": {
+            "color": [
+                "lightskyblue",
+                "yellow",
+                "orangered"
+            ]
+        }
+    },
+    "series": [
+        {
+            "type": "map",
+            "map": "henan",
+            "scaleLimit": {
+                "min": 0.8,
+                "max": 1.9
+            },
+            "mapLocation": {
+                "y": 60
+            },
+            "itemSytle": {
+                "emphasis": {
+                    "label": {
+                        "show": false
+                    }
+                }
+            },
+            "label": {
+                "normal": {
+                    "show": true
+                },
+                "emphasis": {
+                    "show": true
+                }
+            },
+            "data": [
+                {
+                    "name": "郑州市",
+                    "value": "585"
+                },
+                {
+                    "name": "洛阳市",
+                    "value": "450"
+                },
+                {
+                    "name": "许昌市",
+                    "value": "256"
+                },
+                {
+                    "name": "开封市",
+                    "value": "398"
+                },
+                {
+                    "name": "平顶山市",
+                    "value": "444"
+                },
+                {
+                    "name": "安阳市",
+                    "value": "74"
+                },
+                {
+                    "name": "鹤壁市",
+                    "value": "127"
+                },
+                {
+                    "name": "新乡市",
+                    "value": "269"
+                },
+                {
+                    "name": "焦作市",
+                    "value": "36"
+                },
+                {
+                    "name": "濮阳市",
+                    "value": "187"
+                },
+                {
+                    "name": "漯河市",
+                    "value": "33"
+                },
+                {
+                    "name": "三门峡市",
+                    "value": "98"
+                },
+                {
+                    "name": "商丘市",
+                    "value": "254"
+                },
+                {
+                    "name": "周口市",
+                    "value": "87"
+                },
+                {
+                    "name": "驻马店市",
+                    "value": "76"
+                },
+                {
+                    "name": "南阳市",
+                    "value": "325"
+                },
+                {
+                    "name": "信阳市",
+                    "value": "333"
+                },
+                {
+                    "name": "济源市",
+                    "value": "15"
+                }
+            ]
+        }
+    ]
+}

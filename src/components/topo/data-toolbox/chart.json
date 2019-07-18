@@ -1,0 +1,131 @@
+{
+  "title": "Chart",
+  "icon": "insert_chart",
+  "opened": false,
+  "items": [{
+      "text": "line",
+      "icon": "show_chart",
+      "isFontIcon": true,
+      "info": {
+        "type": "chart-line",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
+        },
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 200,
+            "h": 200
+          },
+          "backColor": "white",
+          "zIndex": 1
+        }
+      }
+    },
+    {
+      "text": "step line",
+      "icon": "show_chart",
+      "isFontIcon": true,
+      "info": {
+        "type": "chart-line-step",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
+        },
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 200,
+            "h": 200
+          },
+          "backColor": "white",
+          "zIndex": 1
+        }
+      }
+    },
+    {
+      "text": "bar",
+      "icon": "bar_chart",
+      "isFontIcon": true,
+      "info": {
+        "type": "chart-bar",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
+        },
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 200,
+            "h": 200
+          },
+          "backColor": "white",
+          "zIndex": 1
+        }
+      }
+    },
+    {
+      "text": "pie",
+      "icon": "pie_chart",
+      "isFontIcon": true,
+      "info": {
+        "type": "chart-pie",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
+        },
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 300,
+            "h": 300
+          },
+          "backColor": "white",
+          "zIndex": 1
+        }
+      }
+    },
+    {
+      "text": "gauge",
+      "icon": "av_timer",
+      "isFontIcon": true,
+      "info": {
+        "type": "chart-gauge",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
+        },
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 300,
+            "h": 300
+          },
+          "backColor": "white",
+          "zIndex": 1
+        }
+      }
+    }
+  ]
+}

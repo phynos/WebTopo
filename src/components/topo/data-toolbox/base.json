@@ -1,0 +1,203 @@
+{
+    "title": "Base",
+    "icon": "payment",
+    "opened": false,
+    "items": [
+        {
+            "text": "Text",
+            "icon": "text_fields",
+            "isFontIcon": true,
+            "info": {
+                "type": "text",
+                "action": [],
+                "dataBind": {
+                    "sn": "",
+                    "title": "",
+                    "biz": "",
+                    "queryParam": {}
+                },
+                "style": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "w": 100,
+                        "h": 30
+                    },
+                    "backColor": "transparent",
+                    "foreColor": "#000000",
+                    "zIndex": 1,
+                    "transform": 0,
+                    "text": "Test",
+                    "textAlign": "center",
+                    "fontSize": 14,
+                    "fontFamily": "Arial"
+                }
+            }
+        },
+        {
+            "text": "Image",
+            "icon": "photo_size_select_actual",
+            "isFontIcon": true,
+            "info": {
+                "type": "image",
+                "action": [],
+                "dataBind": {
+                    "sn": "",
+                    "title": "",
+                    "biz": "",
+                    "queryParam": {}
+                },
+                "style": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "w": 200,
+                        "h": 200
+                    },
+                    "backColor": "transparent",
+                    "zIndex": 1,
+                    "transform": 0,
+                    "url": ""
+                }
+            }
+        },
+        {
+            "text": "Triangle",
+            "icon": "change_history",
+            "isFontIcon": true,
+            "info": {
+                "type": "triangle",
+                "action": [],
+                "dataBind": {
+                    "sn": "",
+                    "title": "",
+                    "biz": "",
+                    "queryParam": {}
+                },
+                "style": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "w": 200,
+                        "h": 200
+                    },
+                    "backColor": "transparent",
+                    "foreColor": "grey",
+                    "zIndex": 1,
+                    "transform": 0
+                }
+            }
+        },
+        {
+            "text": "Rect",
+            "icon": "stop",
+            "isFontIcon": true,
+            "info": {
+                "type": "rect",
+                "action": [],
+                "dataBind": {
+                    "sn": "",
+                    "title": "",
+                    "biz": "",
+                    "queryParam": {}
+                },
+                "style": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "w": 100,
+                        "h": 200
+                    },
+                    "backColor": "transparent",
+                    "foreColor": "grey",
+                    "zIndex": 1,
+                    "transform": 0,
+                    "radius": 0
+                }
+            }
+        },
+        {
+            "text": "Circular",
+            "icon": "fiber_manual_record",
+            "isFontIcon": true,
+            "info": {
+                "type": "circular",
+                "action": [],
+                "dataBind": {
+                    "sn": "",
+                    "title": "",
+                    "biz": "",
+                    "queryParam": {}
+                },
+                "style": {
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "w": 200,
+                        "h": 200
+                    },
+                    "backColor": "transparent",
+                    "foreColor": "grey",
+                    "zIndex": 1,
+                    "transform": 0
+                }
+            }
+        },
+        {
+            "text": "Line",
+            "icon": "remove",
+            "isFontIcon": true,
+            "info": {
+                "type": "line",
+                "action": [],
+                "dataBind": {
+                    "sn": "",
+                    "title": "",
+                    "biz": "",
+                    "queryParam": {}
+                },
+                "style": {
+                    "position": {
+                        "x": 100,
+                        "y": 100,
+                        "w": 300,
+                        "h": 30
+                    },
+                    "backColor": "transparent",
+                    "foreColor": "grey",
+                    "zIndex": 1,
+                    "transform": 0,
+                    "lineWidth": 2
+                }
+            }
+        },
+        {
+            "text": "Line-Arrow",
+            "icon": "arrow_forward",
+            "isFontIcon": true,
+            "info": {
+                "type": "line-arrow",
+                "action": [],
+                "dataBind": {
+                    "sn": "",
+                    "title": "",
+                    "biz": "",
+                    "queryParam": {}
+                },
+                "style": {
+                    "position": {
+                        "x": 100,
+                        "y": 100,
+                        "w": 300,
+                        "h": 30
+                    },
+                    "backColor": "transparent",
+                    "foreColor": "grey",
+                    "zIndex": 1,
+                    "transform": 0,
+                    "lineWidth": 2
+                }
+            }
+        }        
+    ]
+}
