@@ -50,4 +50,4 @@ $ quasar dev -m electron
 $ quasar dev -m electron -t ios
 
 ## 运行截图
-![avatar](/shot.png)
+![avatar](./shot.png)
