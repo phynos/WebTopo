@@ -8,6 +8,9 @@ const routes = [
         path: '', component: () => import('pages/topo/Editor.vue')
       }
     ]
+  },
+  {
+    path: '/fullscrenn',component: () =>('/pages/topo/Fullscreen.vue')
   }
 ]
 
