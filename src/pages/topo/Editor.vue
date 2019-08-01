@@ -1,18 +1,18 @@
 <template>
 <div class="topo-editor">
-    <wresize-panel-3 class="full-height">
+    <WresizePanel3 class="full-height">
         <template v-slot:left>
-            <topo-toolbox ref="topoToolbox" class="topo-toolbox" />
+            <TopoToolbox ref="topoToolbox" class="topo-toolbox" />
         </template>
 
         <template v-slot:center>
-            <topo-main ref="topoMain" class="topo-main" :onClickItem="bindData" />
+            <TopoMain ref="topoMain" class="topo-main" :onClickItem="bindData" />
         </template>
 
         <template v-slot:right>
-            <topo-properties ref="topoProperties" class="topo-properties" />
+            <TopoProperties ref="topoProperties" class="topo-properties" />
         </template>
-    </wresize-panel-3>
+    </WresizePanel3>
 </div>
 </template>
 
