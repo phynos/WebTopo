@@ -1,11 +1,12 @@
 <template>
 <div class="topo-main">
-    <vue-ruler-tool :parent="true" :is-scale-revise="true" :preset-line="presetLine" style="width:100%;height:100%;">
+    <vue-ruler-tool :parent="true" :is-scale-revise="true" :preset-line="presetLine" style="width:100%;height: calc(100% - 40px);">
         <div
             tabindex="0"
             id="surface-edit-layer"
             class="topo-layer"                            
             :class="{'topo-layer-view-selected': edit.selectedComponent[-1] == undefined? false:true}"
+            :style="scaleFun"
             @click="clickItem(null, -1)" 
             @mouseup="onMouseup($event)" 
             @mousemove="onMousemove($event)" 
@@ -47,6 +48,23 @@
             </template>
         </div>
     </vue-ruler-tool>
+    <div style="height: 40px;border-top: #ccc solid 1px;position:relative;">
+        <div style="position:absolute;right: 10px;top: 0px;" class="row">                            
+            <div style="line-height:40px;height:40px;padding: 0px 5px;">
+                缩放
+            </div>
+            <q-slider
+                v-model="selectedValue"
+                :min="30"
+                :max="200"
+                :step="1"
+                label
+                :label-value="`${selectedValue}%`"
+                snap
+                style="width:200px;"
+                />
+        </div>                        
+    </div>
 </div>
 </template>
 
@@ -68,6 +86,8 @@ import {
     deepCopy
 } from "@/assets/libs/utils";
 
+import { mapActions, mapGetters, mapState, mapMutations } from 'vuex'
+
 export default {
     name: 'TopoMain',
     components: {
@@ -82,6 +102,15 @@ export default {
         VueRulerTool
     },
     props: ['onClickItem'],
+    computed: {
+        ...mapState({
+            selectedComponents: state => state.topoEditor.selectedComponents, //预留
+        }),
+        scaleFun:function () {
+            var scale = this.selectedValue / 100;
+            return `transform:scale(${scale})`
+        }
+    },
     data() {
         return {
             configData: {
@@ -113,7 +142,8 @@ export default {
             }, {
                 type: 'v',
                 site: 200
-            }]
+            }],
+            selectedValue: 100
         }
     },
     methods: {
