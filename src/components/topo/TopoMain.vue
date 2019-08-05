@@ -81,6 +81,10 @@ import ViewLineWave from './control/canvas/ViewLineWave';
 import ViewRect from './control/canvas/ViewRect';
 import ViewTriangle from './control/canvas/ViewTriangle';
 
+import ViewChart from './control/chart/ViewChart';
+import ViewChartPie from './control/chart/ViewChartPie';
+import ViewChartGauge from './control/chart/ViewChartGauge';
+
 import topoUtil from './util/topo-util';
 import {
     deepCopy
@@ -99,6 +103,9 @@ export default {
         ViewLineWave,
         ViewRect,
         ViewTriangle,
+        ViewChart,
+        ViewChartPie,
+        ViewChartGauge,
         VueRulerTool
     },
     props: ['onClickItem'],
