@@ -1,9 +1,9 @@
 <script>
-import baseVeiw from '../view';
+import BaseVeiw from '../View';
 
 export default {
-    name: 'view-canvas',
-    extends: baseVeiw,
+    name: 'ViewCanvas',
+    extends: BaseVeiw,
     watch: {
         detail: {
             handler(newVal, oldVal) {

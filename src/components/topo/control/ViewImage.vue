@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import baseView from './view';
+import BaseView from './View';
 export default {
     name: 'view-image',
-    extends: baseView,
+    extends: BaseView,
     props: {
 
     },

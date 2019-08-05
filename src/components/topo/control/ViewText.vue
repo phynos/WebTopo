@@ -12,11 +12,11 @@
 
 <script>
 
-import baseView from './view';
+import BaseView from './View';
 
 export default {
     name: 'view-text',
-    extends: baseView,
+    extends: BaseView,
     props: {
         
     },    

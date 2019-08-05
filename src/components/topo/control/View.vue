@@ -1,10 +1,6 @@
-<template>
-
-</template>
-
 <script>
 export default {
-    name: 'view',
+    name: 'View',
     props: {
         editMode: {
             type: Boolean,
