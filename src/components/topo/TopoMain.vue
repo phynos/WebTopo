@@ -231,6 +231,13 @@ export default {
                 if((this.resizeItem.h + dy) > 20) {
                     this.curControl.style.position.h = this.resizeItem.h + dy;
                 }
+                //canvas组件需要重新渲染
+                // DOM 还没有更新
+                this.$nextTick(function () {
+                    // DOM 更新了
+                    var a = this.$refs['comp' + this.curIndex][0];
+                    a.onResize();
+                });
             } else {
                 //移动组件
                 var dx = event.pageX - this.moveItem.startX,
@@ -242,7 +249,7 @@ export default {
                     component.style.position.x = component.style.temp.position.x + dx;
                     component.style.position.y = component.style.temp.position.y + dy;
                 }
-            }
+            }            
         },
         onMouseup(event) {
             if(this.flag.startsWith('resize')) {                
