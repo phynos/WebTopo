@@ -85,6 +85,8 @@ import ViewChart from './control/chart/ViewChart';
 import ViewChartPie from './control/chart/ViewChartPie';
 import ViewChartGauge from './control/chart/ViewChartGauge';
 
+import uid from '@/assets/libs/uid.js'
+
 import topoUtil from './util/topo-util';
 import {
     deepCopy
@@ -286,6 +288,8 @@ export default {
                 component.style.position.y = y; 
             }
             //处理默认值
+            var fuid = uid;
+            component.uuid = fuid();
             component.style.transform = 0;
             component.style.borderWidth = component.style.borderWidth? component.style.borderWidth : 0;
             component.style.borderStyle = component.style.borderStyle? component.style.borderStyle : 'solid';
@@ -351,7 +355,7 @@ export default {
             if(this.edit.copyFromItem == null) {
                 return;
             }
-            var component = this.edit.copyFromItem;
+            var component = this.edit.copyFromItem;            
             component.style.position.x += 25;
             component.style.position.y += 25;
             this.addItem(component);
@@ -369,6 +373,17 @@ export default {
             }
             //删除后默认选择顶级节点
             this.clickItem(null, -1);    
+        },
+        addItem(info){ //增加组件   
+            if(this.checkAddComponent(info) == false) {
+                return;
+            }
+            var component = deepCopy(info); 
+            var fuid = uid;
+            component.uuid = fuid();
+            this.configData.components.push(component);                                    
+            //默认选中，并点击
+            this.clickItem(component,this.configData.components.length - 1);
         },
     }
 }
