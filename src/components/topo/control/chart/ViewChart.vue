@@ -44,12 +44,6 @@ export default {
         }
     },
     methods: {
-        initPage(timeout) {
-            var _this = this;
-            setTimeout(() => {
-                _this.setOption(_this.option);
-            }, timeout || 100);
-        },
         setOption(option) {
             if (this.echart) {
                 this.echart.dispose();
@@ -83,7 +77,9 @@ export default {
         }
     },
     mounted() {
-        this.initPage(100);
+        this.$nextTick(function(){
+            this.setOption(this.option);
+        });
     }
 }
 </script>
