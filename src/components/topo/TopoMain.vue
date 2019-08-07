@@ -181,7 +181,7 @@ export default {
                 component.style.temp.position.y = component.style.position.y;
             }         
         },
-        resizeMousedown(component,$event,index,flag) {
+        resizeMousedown(component,$event,index,flag) {//resize-鼠标按下事件
             this.flag = flag;
             this.curControl = component;
             this.curIndex = index;
@@ -293,6 +293,7 @@ export default {
             //处理默认值
             var fuid = uid;
             component.uuid = fuid();
+            component.name = component.type + this.configData.components.length;
             component.style.visible = true;
             component.style.transform = 0;
             component.style.borderWidth = component.style.borderWidth? component.style.borderWidth : 0;
@@ -385,6 +386,7 @@ export default {
             var component = deepCopy(info); 
             var fuid = uid;
             component.uuid = fuid();
+            component.name = component.type + this.configData.components.length;      
             component.style.visible = true;
             this.configData.components.push(component);                                    
             //默认选中，并点击

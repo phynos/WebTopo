@@ -1,6 +1,10 @@
 <template>
 <div class="topo-properties">
-    <template v-if="selectedComponents.length == 1 && isLayer == false">        
+    <template v-if="selectedComponents.length == 1 && isLayer == false">
+        <div class="topo-properties-nav">
+            <!-- <q-select v-model="curComponent" :options="componentOptions" @input="changeComponent" style="margin-right:0px;height:43px;border:none;" /> -->
+            <q-input v-model="configObject.name" />
+        </div>      
         <div class="topo-properties-tabs">
             <div class="topo-properties-tab" @click="changeTab(0)" :class="{'topo-properties-tab-active': tabIndex == 0}">样式</div>
             <div class="topo-properties-tab" @click="changeTab(1)" :class="{'topo-properties-tab-active': tabIndex == 1}">数据</div>
@@ -189,7 +193,40 @@
 
             </div>
             <div v-show="tabIndex == 2">
-                <div class="not-surpport">暂不支持</div>
+                <template v-if="configObject && configObject.action">
+                    <template v-for="(event,index) in configObject.action">
+                        <table :key="index" style="margin-top:10px;">
+                            <tr>
+                                <td>事件</td>
+                                <td>
+                                    <q-select v-model="event.type" :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick'},{label:'鼠标移入',value:'mouseenter'},{label:'鼠标双击',value:'mouseleave'}]" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>动作</td>
+                                <td>
+                                    <q-select v-model="event.action" :options="[{label:'打开链接',value:'link'},{label:'赋值变量',value:'val'},{label:'展示隐藏',value:'visible'},{label:'调用服务',value:'service'}]" />
+                                </td>
+                            </tr>
+
+                            <tr v-if="event.action == 'visible'">
+                                <td>点击出现</td>
+                                <td>
+                                    <q-select multiple chips v-model="event.showItems" :options="generateTargetComponentOptions()" />
+                                </td>
+                            </tr>
+                            <tr v-if="event.action == 'visible'">
+                                <td>点击隐藏</td>
+                                <td>
+                                    <q-select multiple chips v-model="event.hideItems" :options="generateTargetComponentOptions()" />
+                                </td>
+                            </tr>
+                        </table>
+                    </template>
+                    <div style="width:100%;padding:10px 10px 10px 10px;">
+                        <q-btn label="Add" outline @click="addAction" style="width:100%;" />
+                    </div>
+                </template>
             </div>
         </div>
     </template>
@@ -285,6 +322,27 @@ export default {
 
             }
         },
+        generateTargetComponentOptions() {            
+            var options = [];
+            this.sceneConfigData.components.forEach(component => {
+                if (this.configObject.identifier != component.identifier) {
+                    options.push({
+                        label: component.name || component.type,
+                        value: component.identifier
+                    });
+                }
+            });
+            return options;
+        },
+        addAction() {
+            var action = {
+                type: 'click',
+                action: 'visible',
+                showItems: [],
+                hideItems: []
+            };
+            this.configObject.action.push(action);
+        }
     },
     mounted() {
 
