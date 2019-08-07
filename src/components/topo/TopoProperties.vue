@@ -10,8 +10,8 @@
             <template v-if="configObject != null && isLayer == false">
                 <table style="display: none">
                     <tr>
-                        <td width="50%" style="padding:5px 0px;background-color:#eee;">Property</td>
-                        <td width="50%" style="padding:5px 0px;background-color:#eee;">Value</td>
+                        <td width="50%" style="padding:5px 0px;background-color:#eee;">属性</td>
+                        <td width="50%" style="padding:5px 0px;background-color:#eee;">值</td>
                     </tr>
                 </table>
                 <q-list separator no-border>
@@ -82,8 +82,14 @@
                     <q-expansion-item label="Base" default-opened>
                         <table>
                             <tr>
-                                <td width="50%">z-index</td>
+                                <td width="50%">Visible</td>
                                 <td width="50%">
+                                    <q-select v-model="configObject.style.visible" :options="[{label: 'Visible',value: true},{label: 'Invisible',value: false}]" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>z-index</td>
+                                <td>
                                     <q-input type="number" v-model.lazy="configObject.style.zIndex" />
                                 </td>
                             </tr>
@@ -189,33 +195,14 @@
 </template>
 
 <script>
+
+import { mapActions, mapGetters, mapState, mapMutations } from 'vuex'
+
 export default {
     name: 'TopoProperties',
     data() {
         return {
-            sceneID: null,
-            sceneConfigData: {},
             configObject: null,
-            snOptions: [],
-            bizOption: [],
-            bizTypeOption: [{
-                label: 'live',
-                value: 'live'
-            }, {
-                label: 'hour',
-                value: 'hour'
-            }],
-            bizDataOption: [{
-                label: 'active',
-                value: 'active'
-            }, {
-                label: 'person',
-                value: 'person'
-            }, {
-                label: 'total',
-                value: 'total'
-            }], //数据指纹专用
-            sceneDeviceMap: {},
             isLayer: false,
             tabIndex: 0,
             fontFamilyOptions: [{
@@ -273,9 +260,14 @@ export default {
                     value: "dotted"
                 },
             ],
-            curComponent: '',
-            componentOptions: []
         }
+    },
+    computed: {
+        ...mapState({
+            sceneConfigData: state => state.topoEditor.topoData,
+            selectedComponents: state => state.topoEditor.selectedComponents,
+            selectedComponentMap: state => state.topoEditor.selectedComponentMap,
+        })
     },
     methods: {
         initPage(configData) {

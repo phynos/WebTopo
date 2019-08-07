@@ -290,6 +290,7 @@ export default {
             //处理默认值
             var fuid = uid;
             component.uuid = fuid();
+            component.style.visible = true;
             component.style.transform = 0;
             component.style.borderWidth = component.style.borderWidth? component.style.borderWidth : 0;
             component.style.borderStyle = component.style.borderStyle? component.style.borderStyle : 'solid';
@@ -381,6 +382,7 @@ export default {
             var component = deepCopy(info); 
             var fuid = uid;
             component.uuid = fuid();
+            component.style.visible = true;
             this.configData.components.push(component);                                    
             //默认选中，并点击
             this.clickItem(component,this.configData.components.length - 1);
