@@ -52,7 +52,8 @@
         <div style="position:absolute;left: 0px;top: 0px;" class="row">
             <div style="line-height:40px;height:40px;">
                 已选组件个数：{{selectedComponents.length}}
-            </div>                            
+            </div>
+            <q-btn label="预览" color="primary" size="xs" style="margin-left:100px;height:30px;margin-top:5px;" @click="fullScreen" />
         </div>
         <div style="position:absolute;right: 10px;top: 0px;" class="row">                            
             <div style="line-height:40px;height:40px;padding: 0px 5px;">
@@ -390,6 +391,21 @@ export default {
             //默认选中，并点击
             this.clickItem(component,this.configData.components.length - 1);
         },
+        fullScreen() {
+            let {href} = this.$router.resolve({
+               path: '/fullscreen',
+               name: 'TopoFullscreen',
+               query: {
+                   sceneId: this.sceneId,
+                   sceneName: this.sceneName
+               },
+               params: { 
+                   sceneId: this.sceneId,
+                   sceneName: this.sceneName
+               }
+            });
+            window.open(href, '_blank');
+        }        
     }
 }
 </script>

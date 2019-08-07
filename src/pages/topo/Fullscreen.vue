@@ -1,10 +1,18 @@
 <template>
-    <div class="topo-fullscreen"></div>
+    <div class="topo-fullscreen">
+        <TopoRender />
+    </div>
 </template>
 
 <script>
+
+import TopoRender from '@/components/topo/TopoRender';
+
 export default {
-    name: 'topo-fullscreen',
+    name: 'TopoFullscreen',
+    components: {
+        TopoRender
+    },
     methods: {
 
     },

@@ -10,7 +10,7 @@ const routes = [
     ]
   },
   {
-    path: '/fullscrenn',component: () =>('/pages/topo/Fullscreen.vue')
+    path: '/fullscreen',name: 'TopoFullscreen',component: () =>('pages/topo/Fullscreen.vue')
   }
 ]
 
