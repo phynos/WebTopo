@@ -1,6 +1,6 @@
 <template>
 <div class="topo-main">
-    <vue-ruler-tool :parent="true" :is-scale-revise="true" :preset-line="presetLine" style="width:100%;height: calc(100% - 40px);">
+    <vue-ruler-tool :parent="true" :is-scale-revise="true" style="width:100%;height: calc(100% - 40px);">
         <div
             tabindex="0"
             id="surface-edit-layer"
@@ -49,6 +49,11 @@
         </div>
     </vue-ruler-tool>
     <div style="height: 40px;border-top: #ccc solid 1px;position:relative;">
+        <div style="position:absolute;left: 0px;top: 0px;" class="row">
+            <div style="line-height:40px;height:40px;">
+                已选组件个数：{{selectedComponents.length}}
+            </div>                            
+        </div>
         <div style="position:absolute;right: 10px;top: 0px;" class="row">                            
             <div style="line-height:40px;height:40px;padding: 0px 5px;">
                 缩放
@@ -145,13 +150,6 @@ export default {
             flag: '', //当前操作标志位
             curControl: null,
             curIndex: -1,
-            presetLine: [{
-                type: 'l',
-                site: 100
-            }, {
-                type: 'v',
-                site: 200
-            }],
             selectedValue: 100
         }
     },

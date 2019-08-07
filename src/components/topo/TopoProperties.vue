@@ -197,8 +197,8 @@
                     <template v-for="(event,index) in configObject.action">
                         <table :key="index" style="margin-top:10px;">
                             <tr>
-                                <td>事件</td>
-                                <td>
+                                <td width="50%">事件</td>
+                                <td width="50%">
                                     <q-select v-model="event.type" :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick'},{label:'鼠标移入',value:'mouseenter'},{label:'鼠标双击',value:'mouseleave'}]" />
                                 </td>
                             </tr>
@@ -212,13 +212,13 @@
                             <tr v-if="event.action == 'visible'">
                                 <td>点击出现</td>
                                 <td>
-                                    <q-select multiple chips v-model="event.showItems" :options="generateTargetComponentOptions()" />
+                                    <q-select filled multiple use-chips v-model="event.showItems" :options="generateTargetComponentOptions()" />
                                 </td>
                             </tr>
                             <tr v-if="event.action == 'visible'">
                                 <td>点击隐藏</td>
                                 <td>
-                                    <q-select multiple chips v-model="event.hideItems" :options="generateTargetComponentOptions()" />
+                                    <q-select filled multiple use-chips v-model="event.hideItems" :options="generateTargetComponentOptions()" />
                                 </td>
                             </tr>
                         </table>
