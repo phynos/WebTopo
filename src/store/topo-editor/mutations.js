@@ -64,3 +64,7 @@ export const clearSelectedComponent = (state) => {
         Vue.delete(state.selectedComponentMap,key);
     }
 }
+
+export const setLayerSelected = (state,selected) => {
+    state.selectedIsLayer = selected;
+}

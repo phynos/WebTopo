@@ -1,196 +1,198 @@
 <template>
 <div class="topo-properties">
-    <div class="topo-properties-tabs">
-        <div class="topo-properties-tab" @click="changeTab(0)" :class="{'topo-properties-tab-active': tabIndex == 0}">样式</div>
-        <div class="topo-properties-tab" @click="changeTab(1)" :class="{'topo-properties-tab-active': tabIndex == 1}">数据</div>
-        <div class="topo-properties-tab" @click="changeTab(2)" :class="{'topo-properties-tab-active': tabIndex == 2}">行为</div>
-    </div>
-    <div class="topo-properties-table">
-        <div v-show="tabIndex == 0">
-            <template v-if="configObject != null && isLayer == false">
-                <table style="display: none">
-                    <tr>
-                        <td width="50%" style="padding:5px 0px;background-color:#eee;">属性</td>
-                        <td width="50%" style="padding:5px 0px;background-color:#eee;">值</td>
-                    </tr>
-                </table>
-                <q-list separator no-border>
-                    <q-expansion-item label="Position" default-opened>
-                        <table>
-                            <tr>
-                                <td width="50%">X</td>
-                                <td width="50%">
-                                    <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.x" style="padding-right:5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Y</td>
-                                <td>
-                                    <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.y" style="padding-right:5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>W</td>
-                                <td>
-                                    <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.w" style="padding-right:5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>H</td>
-                                <td>
-                                    <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.h" style="padding-right:5px;" />
-                                </td>
-                            </tr>
-                        </table>
-                    </q-expansion-item>
-
-                    <q-expansion-item label="Border" default-opened>
-                        <table>
-                            <tr>
-                                <td width="50%">BorderWidth</td>
-                                <td width="50%">
-                                    <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.borderWidth" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>BorderStyle</td>
-                                <td>
-                                    <q-select v-model="configObject.style.borderStyle" :options="borderStyleOptions" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>BorderColor</td>
-                                <td>
-                                    <q-input
-                                        filled
-                                        v-model="configObject.style.borderColor"
-                                        class="my-input"
-                                    >
-                                        <template v-slot:append>
-                                        <q-icon name="colorize" class="cursor-pointer">
-                                            <q-popup-proxy transition-show="scale" transition-hide="scale">
-                                            <q-color v-model="configObject.style.borderColor" />
-                                            </q-popup-proxy>
-                                        </q-icon>
-                                        </template>
-                                    </q-input>
-                                </td>
-                            </tr>
-                        </table>
-                    </q-expansion-item>
-
-                    <q-expansion-item label="Base" default-opened>
-                        <table>
-                            <tr>
-                                <td width="50%">Visible</td>
-                                <td width="50%">
-                                    <q-select v-model="configObject.style.visible" :options="[{label: 'Visible',value: true},{label: 'Invisible',value: false}]" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>z-index</td>
-                                <td>
-                                    <q-input type="number" v-model.lazy="configObject.style.zIndex" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Rolate</td>
-                                <td>
-                                    <q-input type="number" v-model.lazy="configObject.style.transform" suffix="deg" style="padding-right:5px;" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>BackColor</td>
-                                <td>
-                                    <q-input
-                                        filled
-                                        v-model="configObject.style.backColor"
-                                        class="my-input"
-                                    >
-                                        <template v-slot:append>
-                                        <q-icon name="colorize" class="cursor-pointer">
-                                            <q-popup-proxy transition-show="scale" transition-hide="scale">
-                                            <q-color v-model="configObject.style.backColor" />
-                                            </q-popup-proxy>
-                                        </q-icon>
-                                        </template>
-                                    </q-input>
-                                </td>
-                            </tr>
-                            <tr v-if="configObject.style.url != undefined && configObject.style.url != null">
-                                <td>URL</td>
-                                <td>
-                                    <q-input v-model.lazy="configObject.style.url" />
-                                </td>
-                            </tr>
-                            <tr v-if="configObject.style.text != undefined">
-                                <td>Text</td>
-                                <td>
-                                    <q-input v-model.lazy="configObject.style.text" />
-                                </td>
-                            </tr>
-                            <tr v-if="configObject.style.textAlign != undefined">
-                                <td>TextAlign</td>
-                                <td>
-                                    <q-select v-model="configObject.style.textAlign" :options="textAlignOptions" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ForeColor</td>
-                                <td>
-                                    <q-input
-                                        filled
-                                        v-model="configObject.style.foreColor"
-                                        class="my-input"
-                                    >
-                                        <template v-slot:append>
-                                        <q-icon name="colorize" class="cursor-pointer">
-                                            <q-popup-proxy transition-show="scale" transition-hide="scale">
-                                            <q-color v-model="configObject.style.foreColor" />
-                                            </q-popup-proxy>
-                                        </q-icon>
-                                        </template>
-                                    </q-input>
-                                </td>
-                            </tr>
-                            <tr v-if="configObject.style.fontFamily != undefined">
-                                <td>Font Family</td>
-                                <td>
-                                    <q-select v-model="configObject.style.fontFamily" :options="fontFamilyOptions" />
-                                </td>
-                            </tr>
-                            <tr v-if="configObject.style.fontSize != undefined">
-                                <td>Font Size</td>
-                                <td>
-                                    <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.fontSize" />
-                                </td>
-                            </tr>
-                            <tr v-if="configObject.style.radius != undefined">
-                                <td>Radius</td>
-                                <td>
-                                    <q-input type="number" v-model.lazy="configObject.style.radius" />
-                                </td>
-                            </tr>
-                            <tr v-if="configObject.style.lineWidth != undefined">
-                                <td>LineWidth</td>
-                                <td>
-                                    <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.lineWidth" />
-                                </td>
-                            </tr>
-                        </table>
-                    </q-expansion-item>
-                </q-list>
-            </template>
+    <template v-if="selectedComponents.length == 1 && isLayer == false">        
+        <div class="topo-properties-tabs">
+            <div class="topo-properties-tab" @click="changeTab(0)" :class="{'topo-properties-tab-active': tabIndex == 0}">样式</div>
+            <div class="topo-properties-tab" @click="changeTab(1)" :class="{'topo-properties-tab-active': tabIndex == 1}">数据</div>
+            <div class="topo-properties-tab" @click="changeTab(2)" :class="{'topo-properties-tab-active': tabIndex == 2}">行为</div>
         </div>
-        <div v-show="tabIndex == 1">
+        <div class="topo-properties-table">
+            <div v-show="tabIndex == 0">
+                <template v-if="configObject != null && isLayer == false">
+                    <table style="display: none">
+                        <tr>
+                            <td width="50%" style="padding:5px 0px;background-color:#eee;">属性</td>
+                            <td width="50%" style="padding:5px 0px;background-color:#eee;">值</td>
+                        </tr>
+                    </table>
+                    <q-list separator no-border>
+                        <q-expansion-item label="Position" default-opened>
+                            <table>
+                                <tr>
+                                    <td width="50%">X</td>
+                                    <td width="50%">
+                                        <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.x" style="padding-right:5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Y</td>
+                                    <td>
+                                        <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.y" style="padding-right:5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>W</td>
+                                    <td>
+                                        <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.w" style="padding-right:5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>H</td>
+                                    <td>
+                                        <q-input type="number" suffix="px" v-model.lazy="configObject.style.position.h" style="padding-right:5px;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </q-expansion-item>
 
-            <div class="not-surpport">根据实际系统设计</div>
+                        <q-expansion-item label="Border" default-opened>
+                            <table>
+                                <tr>
+                                    <td width="50%">BorderWidth</td>
+                                    <td width="50%">
+                                        <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.borderWidth" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>BorderStyle</td>
+                                    <td>
+                                        <q-select v-model="configObject.style.borderStyle" :options="borderStyleOptions" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>BorderColor</td>
+                                    <td>
+                                        <q-input
+                                            filled
+                                            v-model="configObject.style.borderColor"
+                                            class="my-input"
+                                        >
+                                            <template v-slot:append>
+                                            <q-icon name="colorize" class="cursor-pointer">
+                                                <q-popup-proxy transition-show="scale" transition-hide="scale">
+                                                <q-color v-model="configObject.style.borderColor" />
+                                                </q-popup-proxy>
+                                            </q-icon>
+                                            </template>
+                                        </q-input>
+                                    </td>
+                                </tr>
+                            </table>
+                        </q-expansion-item>
 
+                        <q-expansion-item label="Base" default-opened>
+                            <table>
+                                <tr>
+                                    <td width="50%">Visible</td>
+                                    <td width="50%">
+                                        <q-select v-model="configObject.style.visible" :options="[{label: 'Visible',value: true},{label: 'Invisible',value: false}]" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>z-index</td>
+                                    <td>
+                                        <q-input type="number" v-model.lazy="configObject.style.zIndex" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Rolate</td>
+                                    <td>
+                                        <q-input type="number" v-model.lazy="configObject.style.transform" suffix="deg" style="padding-right:5px;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>BackColor</td>
+                                    <td>
+                                        <q-input
+                                            filled
+                                            v-model="configObject.style.backColor"
+                                            class="my-input"
+                                        >
+                                            <template v-slot:append>
+                                            <q-icon name="colorize" class="cursor-pointer">
+                                                <q-popup-proxy transition-show="scale" transition-hide="scale">
+                                                <q-color v-model="configObject.style.backColor" />
+                                                </q-popup-proxy>
+                                            </q-icon>
+                                            </template>
+                                        </q-input>
+                                    </td>
+                                </tr>
+                                <tr v-if="configObject.style.url != undefined && configObject.style.url != null">
+                                    <td>URL</td>
+                                    <td>
+                                        <q-input v-model.lazy="configObject.style.url" />
+                                    </td>
+                                </tr>
+                                <tr v-if="configObject.style.text != undefined">
+                                    <td>Text</td>
+                                    <td>
+                                        <q-input v-model.lazy="configObject.style.text" />
+                                    </td>
+                                </tr>
+                                <tr v-if="configObject.style.textAlign != undefined">
+                                    <td>TextAlign</td>
+                                    <td>
+                                        <q-select v-model="configObject.style.textAlign" :options="textAlignOptions" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ForeColor</td>
+                                    <td>
+                                        <q-input
+                                            filled
+                                            v-model="configObject.style.foreColor"
+                                            class="my-input"
+                                        >
+                                            <template v-slot:append>
+                                            <q-icon name="colorize" class="cursor-pointer">
+                                                <q-popup-proxy transition-show="scale" transition-hide="scale">
+                                                <q-color v-model="configObject.style.foreColor" />
+                                                </q-popup-proxy>
+                                            </q-icon>
+                                            </template>
+                                        </q-input>
+                                    </td>
+                                </tr>
+                                <tr v-if="configObject.style.fontFamily != undefined">
+                                    <td>Font Family</td>
+                                    <td>
+                                        <q-select v-model="configObject.style.fontFamily" :options="fontFamilyOptions" />
+                                    </td>
+                                </tr>
+                                <tr v-if="configObject.style.fontSize != undefined">
+                                    <td>Font Size</td>
+                                    <td>
+                                        <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.fontSize" />
+                                    </td>
+                                </tr>
+                                <tr v-if="configObject.style.radius != undefined">
+                                    <td>Radius</td>
+                                    <td>
+                                        <q-input type="number" v-model.lazy="configObject.style.radius" />
+                                    </td>
+                                </tr>
+                                <tr v-if="configObject.style.lineWidth != undefined">
+                                    <td>LineWidth</td>
+                                    <td>
+                                        <q-input type="number" suffix="px" style="padding-right:5px;" v-model.lazy="configObject.style.lineWidth" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </q-expansion-item>
+                    </q-list>
+                </template>
+            </div>
+            <div v-show="tabIndex == 1">
+
+                <div class="not-surpport">根据实际系统设计</div>
+
+            </div>
+            <div v-show="tabIndex == 2">
+                <div class="not-surpport">暂不支持</div>
+            </div>
         </div>
-        <div v-show="tabIndex == 2">
-            <div class="not-surpport">暂不支持</div>
-        </div>
-    </div>
+    </template>
 </div>
 </template>
 

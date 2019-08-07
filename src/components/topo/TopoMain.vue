@@ -5,7 +5,7 @@
             tabindex="0"
             id="surface-edit-layer"
             class="topo-layer"                            
-            :class="{'topo-layer-view-selected': edit.selectedComponent[-1] == undefined? false:true}"
+            :class="{'topo-layer-view-selected': selectedIsLayer}"
             :style="scaleFun"
             @click="clickItem(null, -1)" 
             @mouseup="onMouseup($event)" 
@@ -17,7 +17,7 @@
                      :key="index"
                      tabindex="0"
                      class="topo-layer-view"
-                     :class="{'topo-layer-view-selected': edit.selectedComponent[index] == undefined? false:true }" 
+                     :class="{'topo-layer-view-selected': selectedComponentMap[component.identifier] == undefined? false:true }" 
                      @click.stop="clickComponent(index,component,$event)"
                      @mousedown="controlMousedown(component,$event,index)"
                      v-on:keyup.delete="removeItem(index,component)"                                     
@@ -36,14 +36,14 @@
                             transform: component.style.transform? `rotate(${component.style.transform}deg)`:'rotate(0deg)',
                         }">
                     <component v-bind:is="parseView(component)" :detail="component" :editMode="true" :ref="'comp' + index"/>                                    
-                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lt')" v-show="edit.selectedComponent[index] != undefined" class="resize-left-top"></div>
-                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lc')" v-show="edit.selectedComponent[index] != undefined" class="resize-left-center"></div>
-                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lb')" v-show="edit.selectedComponent[index] != undefined" class="resize-left-bottom"></div>
-                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-rt')" v-show="edit.selectedComponent[index] != undefined" class="resize-right-top"></div>
-                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-rc')" v-show="edit.selectedComponent[index] != undefined" class="resize-right-center"></div>
-                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-rb')" v-show="edit.selectedComponent[index] != undefined" class="resize-right-bottom"></div>
-                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-ct')" v-show="edit.selectedComponent[index] != undefined" class="resize-center-top"></div>
-                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-cb')" v-show="edit.selectedComponent[index] != undefined" class="resize-center-bottom"></div>
+                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lt')" v-show="selectedComponentMap[component.identifier]" class="resize-left-top"></div>
+                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lc')" v-show="selectedComponentMap[component.identifier]" class="resize-left-center"></div>
+                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lb')" v-show="selectedComponentMap[component.identifier]" class="resize-left-bottom"></div>
+                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-rt')" v-show="selectedComponentMap[component.identifier]" class="resize-right-top"></div>
+                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-rc')" v-show="selectedComponentMap[component.identifier]" class="resize-right-center"></div>
+                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-rb')" v-show="selectedComponentMap[component.identifier]" class="resize-right-bottom"></div>
+                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-ct')" v-show="selectedComponentMap[component.identifier]" class="resize-center-top"></div>
+                    <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-cb')" v-show="selectedComponentMap[component.identifier]" class="resize-center-bottom"></div>
                 </div>
             </template>
         </div>
@@ -113,7 +113,10 @@ export default {
     props: ['onClickItem'],
     computed: {
         ...mapState({
-            selectedComponents: state => state.topoEditor.selectedComponents, //预留
+            selectedComponents: state => state.topoEditor.selectedComponents,
+            selectedComponentMap: state => state.topoEditor.selectedComponentMap,
+            configData: state => state.topoEditor.topoData,
+            selectedIsLayer: state => state.topoEditor.selectedIsLayer
         }),
         scaleFun:function () {
             var scale = this.selectedValue / 100;
@@ -122,9 +125,6 @@ export default {
     },
     data() {
         return {
-            configData: {
-                components: []
-            },
             edit: {
                 selectedComponent: {}, //当前选中的组件
                 hoverItem: '', //当前鼠标hover的组件
@@ -156,6 +156,13 @@ export default {
         }
     },
     methods: {
+        ...mapMutations('topoEditor',[
+            'setSelectedComponent',
+            'addSelectedComponent',
+            'removeSelectedComponent',
+            'clearSelectedComponent',
+            'setLayerSelected'
+        ]),
         controlMousedown(component,event,index) {
             if(event.ctrlKey) {                
                 return;
@@ -166,10 +173,8 @@ export default {
             this.moveItem.startX = event.pageX;
             this.moveItem.startY = event.pageY; 
             //记录初始信息--move
-            for(var key in this.edit.selectedComponent) {
-                if(key == -1)
-                    continue;
-                var component = this.edit.selectedComponent[key];
+            for(var key in this.selectedComponentMap) {
+                var component = this.selectedComponentMap[key];
                 component.style.temp = {};
                 component.style.temp.position = {};
                 component.style.temp.position.x = component.style.position.x;
@@ -251,10 +256,8 @@ export default {
                 //移动组件
                 var dx = event.pageX - this.moveItem.startX,
                     dy = event.pageY - this.moveItem.startY;
-                for(var key in this.edit.selectedComponent) {
-                    if(key == -1)
-                        continue;
-                    var component = this.edit.selectedComponent[key];
+                for(var key in this.selectedComponentMap) {
+                    var component = this.selectedComponentMap[key];
                     component.style.position.x = component.style.temp.position.x + dx;
                     component.style.position.y = component.style.temp.position.y + dy;
                 }
@@ -319,17 +322,15 @@ export default {
             if(component == null) {
                 isLayer = true;
                 configObject = this.configData;                
-                this.edit.selectedComponent = {};
-                this.$set(this.edit.selectedComponent, index , 'scene-layer');              
+                this.clearSelectedComponent();           
             } else {
                 isLayer = false;
                 configObject = component;
-                if(this.edit.selectedComponent[index] == undefined) {
-                    this.edit.selectedComponent = {};
-                    this.$set(this.edit.selectedComponent, index , component);
+                if(this.selectedComponentMap[component.identifier] == undefined) {
+                    this.setSelectedComponent(component);
                 } else {
                     //如果已经选中，则不做任何处理
-                }                               
+                }
             }   
             if (this.onClickItem) {
                 this.onClickItem(configObject, index, isLayer);
@@ -337,12 +338,11 @@ export default {
         },
         clickComponent(index,component,event){//点击组件
             if(event.ctrlKey == true) { //点击了ctrl
-                this.$delete(this.edit.selectedComponent, -1);
-                if(this.edit.selectedComponent[index] == undefined) {
-                    //因为selectedComponent是对象，直接赋值vue无法监听
-                    this.$set(this.edit.selectedComponent, index , component);
-                } else {                
-                    this.$delete(this.edit.selectedComponent, index);
+                this.setLayerSelected(false);
+                if(this.selectedComponentMap[component.identifier] == undefined) {
+                    this.addSelectedComponent(component);
+                } else {
+                    this.removeSelectedComponent(component);
                 }
             } else {
                 //这里不再处理点击事件，改为鼠标左键
@@ -363,8 +363,11 @@ export default {
         },
         removeItem(index,component) { //移除组件
             var keys = [];
-            for(var key in this.edit.selectedComponent) {
-                keys.push(key);
+            for(var i = 0; i < this.configData.components.length; i++) {
+                var identifier = this.configData.components[i].identifier;
+                if(this.selectedComponentMap[identifier] != undefined) {
+                    keys.push(i);
+                }
             }
             //排序
             keys.sort((a,b) =>{ return a-b;});
