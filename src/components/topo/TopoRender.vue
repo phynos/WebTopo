@@ -101,7 +101,8 @@ export default {
             }
         },
     },
-    mounted() {        
+    mounted() {    
+        //这里只是纯前端项目，实际应该从后台拿取数据    
         var temp = localStorage.getItem('topoData');
         this.configData = JSON.parse(temp);
     }
