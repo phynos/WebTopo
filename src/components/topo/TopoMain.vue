@@ -123,7 +123,7 @@ export default {
         ViewChartGauge,
         VueRulerTool
     },
-    props: ['onClickItem'],
+    props: [],
     computed: {
         ...mapState({
             selectedComponents: state => state.topoEditor.selectedComponents,
@@ -382,23 +382,17 @@ export default {
             return topoUtil.parseViewName(component);
         },
         clickItem(component, index) {
-            var isLayer = false, configObject = null;
-            if(component == null) {
-                isLayer = true;
-                configObject = this.configData;                
+            if(component == null) {  
+                this.setLayerSelected(true);            
                 this.clearSelectedComponent();           
             } else {
-                isLayer = false;
-                configObject = component;
+                this.setLayerSelected(false);
                 if(this.selectedComponentMap[component.identifier] == undefined) {
                     this.setSelectedComponent(component);
                 } else {
                     //如果已经选中，则不做任何处理
                 }
-            }   
-            if (this.onClickItem) {
-                this.onClickItem(configObject, index, isLayer);
-            }         
+            }
         },
         clickComponent(index,component,event){//点击组件
             if(event.ctrlKey == true) { //点击了ctrl

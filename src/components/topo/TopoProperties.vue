@@ -1,6 +1,6 @@
 <template>
 <div class="topo-properties">
-    <template v-if="selectedComponents.length == 1 && isLayer == false">
+    <template v-if="configObject != null && isLayer == false">
         <div class="topo-properties-nav">
             <!-- <q-select v-model="curComponent" :options="componentOptions" @input="changeComponent" style="margin-right:0px;height:43px;border:none;" /> -->
             <q-input v-model="configObject.name" />
@@ -241,7 +241,6 @@ export default {
     name: 'TopoProperties',
     data() {
         return {
-            configObject: null,
             isLayer: false,
             tabIndex: 0,
             fontFamilyOptions: [{
@@ -306,6 +305,7 @@ export default {
             sceneConfigData: state => state.topoEditor.topoData,
             selectedComponents: state => state.topoEditor.selectedComponents,
             selectedComponentMap: state => state.topoEditor.selectedComponentMap,
+            configObject: state => state.topoEditor.selectedComponent,        
         })
     },
     methods: {

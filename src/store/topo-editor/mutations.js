@@ -17,6 +17,7 @@ export const setSelectedComponent = (state,component) => {
     state.selectedComponents = [component.identifier];
     state.selectedComponentMap = {};
     Vue.set(state.selectedComponentMap,component.identifier,component);
+    Vue.set(state,'selectedComponent',component);    
 };
 
 /**
@@ -29,8 +30,16 @@ export const addSelectedComponent = (state,component) => {
     if(!component.identifier) {
         component.identifier = fuid();
     }    
+    if(state.selectedComponentMap[component.identifier]) {
+        return;
+    }
     state.selectedComponents.push(component.identifier);
     Vue.set(state.selectedComponentMap,component.identifier,component);
+    if(state.selectedComponents.length == 1)  {
+        Vue.set(state,'selectedComponent',component);    
+    } else {
+        Vue.set(state,'selectedComponent',null);    
+    }
 };
 
 /**
@@ -52,6 +61,15 @@ export const removeSelectedComponent = (state,component) => {
         state.selectedComponents.splice(index,1);
     }    
     Vue.delete(state.selectedComponentMap,component.identifier);
+    //如果移除的是选中组件
+    if(state.selectedComponent != null && component.identifier == state.selectedComponent.identifier) {
+        Vue.set(state,'selectedComponent',null); 
+    }
+    //如果只有一个组件，则默认选中
+    if(state.selectedComponents.length == 1)  {
+        var _component = state.selectedComponentMap[state.selectedComponents[0]];
+        Vue.set(state,'selectedComponent',_component);
+    }
 };
 
 /**
@@ -63,6 +81,7 @@ export const clearSelectedComponent = (state) => {
     for(var key in state.selectedComponentMap) {
         Vue.delete(state.selectedComponentMap,key);
     }
+    Vue.set(state,'selectedComponent',null); 
 }
 
 export const setLayerSelected = (state,selected) => {

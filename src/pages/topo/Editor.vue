@@ -6,7 +6,7 @@
         </template>
 
         <template v-slot:center>
-            <TopoMain ref="topoMain" class="topo-main" :onClickItem="bindData" />
+            <TopoMain ref="topoMain" class="topo-main" />
         </template>
 
         <template v-slot:right>
@@ -37,9 +37,7 @@ export default {
         }
     },
     methods: {
-        bindData(configData, type, index) {
-            this.$refs.topoProperties.bindData(configData, type, index);
-        },
+        
     }
 }
 </script>
