@@ -8,8 +8,9 @@
             :class="{'topo-layer-view-selected': selectedIsLayer}"
             :style="scaleFun"
             @click="clickItem(null, -1)" 
-            @mouseup="onMouseup($event)" 
-            @mousemove="onMousemove($event)" 
+            @mouseup="onLayerMouseup($event)" 
+            @mousemove="onLayerMousemove($event)" 
+            @mousedown="onLayerMousedown($event)" 
             @dragover.prevent
             @drop="onDrop">
             <template v-for="(component,index) in configData.components">
@@ -20,11 +21,11 @@
                      :class="{'topo-layer-view-selected': selectedComponentMap[component.identifier] == undefined? false:true }" 
                      @click.stop="clickComponent(index,component,$event)"
                      @mousedown="controlMousedown(component,$event,index)"
-                     v-on:keyup.delete="removeItem(index,component)"
-                     v-on:keydown.up.exact="moveItems('up')"
-                     v-on:keydown.right.exact="moveItems('right')"
-                     v-on:keydown.down.exact="moveItems('down')"
-                     v-on:keydown.left.exact="moveItems('left')"                                     
+                     @keyup.delete="removeItem(index,component)"
+                     @keydown.up.exact="moveItems('up')"
+                     @keydown.right.exact="moveItems('right')"
+                     @keydown.down.exact="moveItems('down')"
+                     @keydown.left.exact="moveItems('left')"                                     
                      @keydown.ctrl.67="copyItem(index,component)"
                      @keydown.ctrl.86="pasteItem"
                      :style="{
@@ -50,6 +51,8 @@
                     <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-cb')" v-show="selectedComponentMap[component.identifier]" class="resize-center-bottom"></div>
                 </div>
             </template>
+            <div class="topo-frame-selection" :style="{width: frameSelectionDiv.width + 'px',height: frameSelectionDiv.height + 'px',top: frameSelectionDiv.top + 'px',left: frameSelectionDiv.left + 'px'}">
+            </div>
         </div>
     </vue-ruler-tool>
     <div style="height: 40px;border-top: #ccc solid 1px;position:relative;">
@@ -151,7 +154,17 @@ export default {
                 y: 0,
                 w: 0,
                 h: 0,
-            }, //resize组件 相关变量            
+            }, //resize组件 相关变量  
+            frameSelectionDiv: {
+                width: 0,
+                height: 0,
+                top: 10,
+                left: 10,
+                startX: 0,
+                startY: 0,
+                startPageX: 0,                
+                startPageY: 0,
+            },          
             flag: '', //当前操作标志位
             curControl: null,
             curIndex: -1,
@@ -198,7 +211,7 @@ export default {
             this.resizeItem.w = this.curControl.style.position.w;
             this.resizeItem.h = this.curControl.style.position.h;            
         },
-        onMousemove(event) {
+        onLayerMousemove(event) {
             if(event.which != 1) {
                 this.flag = '';
                 return;
@@ -255,7 +268,7 @@ export default {
                     var a = this.$refs['comp' + this.curIndex][0];
                     a.onResize();
                 });
-            } else {
+            } else if(this.flag ==  'move') {
                 //移动组件
                 var dx = event.pageX - this.moveItem.startX,
                     dy = event.pageY - this.moveItem.startY;
@@ -264,15 +277,45 @@ export default {
                     component.style.position.x = component.style.temp.position.x + dx;
                     component.style.position.y = component.style.temp.position.y + dy;
                 }
+            } else if(this.flag == 'frame_selection') {
+                var dx = event.pageX - this.frameSelectionDiv.startPageX;
+                var dy = event.pageY - this.frameSelectionDiv.startPageY;  
+                this.frameSelectionDiv.width = Math.abs(dx);
+                this.frameSelectionDiv.height = Math.abs(dy);              
+                if(dx > 0 && dy > 0) {            
+                    this.frameSelectionDiv.top = this.frameSelectionDiv.startY;
+                    this.frameSelectionDiv.left = this.frameSelectionDiv.startX;
+                } else if(dx > 0 && dy < 0) {
+                    this.frameSelectionDiv.top = this.frameSelectionDiv.startY + dy;
+                    this.frameSelectionDiv.left = this.frameSelectionDiv.startX;
+                } else if(dx < 0 && dy > 0) {
+                    this.frameSelectionDiv.top = this.frameSelectionDiv.startY;
+                    this.frameSelectionDiv.left = this.frameSelectionDiv.startX + dx;
+                } else if(dx < 0 && dy < 0) {
+                    this.frameSelectionDiv.top = this.frameSelectionDiv.startY + dy;
+                    this.frameSelectionDiv.left = this.frameSelectionDiv.startX + dx;
+                }                                
             }            
         },
-        onMouseup(event) {
+        onLayerMouseup(event) {
             if(this.flag.startsWith('resize')) {                
                 var a = this.$refs['comp' + this.curIndex][0];
                 a.onResize();
+            } else if(this.flag == 'frame_selection') {
+                this.frameSelectionDiv.width = 0;
+                this.frameSelectionDiv.height = 0;
+                this.frameSelectionDiv.top = 0;
+                this.frameSelectionDiv.left = 0;
             }
             this.flag = '';
-        },        
+        },     
+        onLayerMousedown($event) {
+            this.flag = 'frame_selection';
+            this.frameSelectionDiv.startX = event.offsetX;
+            this.frameSelectionDiv.startY = event.offsetY;
+            this.frameSelectionDiv.startPageX = event.pageX;
+            this.frameSelectionDiv.startPageY = event.pageY;
+        },
         onDrop(event) {
             event.preventDefault();        
             var infoJson = event.dataTransfer.getData('my-info');
@@ -445,6 +488,14 @@ export default {
         height: 100%;
         position: relative;
         overflow: auto;
+
+        .topo-frame-selection {
+            background-color: #8787e7;
+            opacity: 0.3;
+            border: #0000ff solid 1px;
+            position: absolute;   
+            z-index: 999;         
+        }
 
         .topo-layer-view {
             position: absolute;
