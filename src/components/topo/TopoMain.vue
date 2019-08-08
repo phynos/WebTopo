@@ -20,7 +20,11 @@
                      :class="{'topo-layer-view-selected': selectedComponentMap[component.identifier] == undefined? false:true }" 
                      @click.stop="clickComponent(index,component,$event)"
                      @mousedown="controlMousedown(component,$event,index)"
-                     v-on:keyup.delete="removeItem(index,component)"                                     
+                     v-on:keyup.delete="removeItem(index,component)"
+                     v-on:keydown.up.exact="moveItems('up')"
+                     v-on:keydown.right.exact="moveItems('right')"
+                     v-on:keydown.down.exact="moveItems('down')"
+                     v-on:keydown.left.exact="moveItems('left')"                                     
                      @keydown.ctrl.67="copyItem(index,component)"
                      @keydown.ctrl.86="pasteItem"
                      :style="{
@@ -302,6 +306,23 @@ export default {
             this.configData.components.push(component);                                    
             //默认选中，并点击
             this.clickItem(component,this.configData.components.length - 1);
+        },
+        moveItems(direction){
+            var dx = 0,dy = 0;
+            if(direction == 'up') {
+                dy = -1;
+            } else if(direction == 'right') {
+                dx = 1;
+            } else if(direction == 'down') {
+                dy = 1;
+            } else if(direction == 'left') {
+                dx = -1;
+            }
+            for(var key in this.selectedComponentMap) {
+                var component = this.selectedComponentMap[key];
+                component.style.position.x = component.style.position.x + dx;
+                component.style.position.y = component.style.position.y + dy;
+            }
         },
         checkAddComponent(info){
             if(info == null) {
