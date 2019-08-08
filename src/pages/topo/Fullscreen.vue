@@ -1,5 +1,5 @@
 <template>
-    <div class="topo-fullscreen">
+    <div class="topo-fullscreen">        
         <TopoRender />
     </div>
 </template>
@@ -20,7 +20,7 @@ export default {
 
     },
     mounted() {
-
+        alert("dfdf");
     }
 
 }
