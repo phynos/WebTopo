@@ -7,7 +7,7 @@
             class="topo-layer"                            
             :class="{'topo-layer-view-selected': selectedIsLayer}"
             :style="scaleFun"
-            @click="clickItem(null, -1)" 
+            @click="onLayerClick($event)" 
             @mouseup="onLayerMouseup($event)" 
             @mousemove="onLayerMousemove($event)" 
             @mousedown="onLayerMousedown($event)" 
@@ -282,45 +282,7 @@ export default {
                     component.style.position.y = component.style.temp.position.y + dy;
                 }
             } else if(this.flag == 'frame_selection') {
-                var dx = event.pageX - this.frameSelectionDiv.startPageX;
-                var dy = event.pageY - this.frameSelectionDiv.startPageY;  
-                this.frameSelectionDiv.width = Math.abs(dx);
-                this.frameSelectionDiv.height = Math.abs(dy);              
-                if(dx > 0 && dy > 0) {            
-                    this.frameSelectionDiv.top = this.frameSelectionDiv.startY;
-                    this.frameSelectionDiv.left = this.frameSelectionDiv.startX;
-                } else if(dx > 0 && dy < 0) {
-                    this.frameSelectionDiv.top = this.frameSelectionDiv.startY + dy;
-                    this.frameSelectionDiv.left = this.frameSelectionDiv.startX;
-                } else if(dx < 0 && dy > 0) {
-                    this.frameSelectionDiv.top = this.frameSelectionDiv.startY;
-                    this.frameSelectionDiv.left = this.frameSelectionDiv.startX + dx;
-                } else if(dx < 0 && dy < 0) {
-                    this.frameSelectionDiv.top = this.frameSelectionDiv.startY + dy;
-                    this.frameSelectionDiv.left = this.frameSelectionDiv.startX + dx;
-                }
-                //判断各个组件是否在方框内
-                var _this = this;
-                var rect = {
-                    x: this.frameSelectionDiv.left,
-                    y: this.frameSelectionDiv.top,
-                    width: this.frameSelectionDiv.width,
-                    height: this.frameSelectionDiv.height
-                };
-                var components = this.configData.components;
-                components.forEach(component => {
-                    var itemRect = {
-                        x: component.style.position.x,
-                        y: component.style.position.y,
-                        width: component.style.position.w,
-                        height: component.style.position.h,
-                    };
-                    if(checkInRect(rect,itemRect)) {
-                        _this.addSelectedComponent(component);
-                    } else {
-                        _this.removeSelectedComponent(component);
-                    }
-                });                                
+                this.onFrameSelection(event);                                
             }            
         },
         onLayerMouseup(event) {
@@ -328,10 +290,16 @@ export default {
                 var a = this.$refs['comp' + this.curIndex][0];
                 a.onResize();
             } else if(this.flag == 'frame_selection') {
+                //由于和onLayerClick冲突，这里模拟下点击空白区域
+                this.onFrameSelection(event);
                 this.frameSelectionDiv.width = 0;
                 this.frameSelectionDiv.height = 0;
                 this.frameSelectionDiv.top = 0;
                 this.frameSelectionDiv.left = 0;
+                //这里处理onLayerClick
+                if(this.selectedComponents.length){
+                    this.setLayerSelected(true); 
+                }
             }
             this.flag = '';
         },     
@@ -342,6 +310,51 @@ export default {
             this.frameSelectionDiv.startPageX = event.pageX;
             this.frameSelectionDiv.startPageY = event.pageY;
         },
+        onLayerClick() {
+            // this.clearSelectedComponent(); 
+            // this.setLayerSelected(true); 
+        },
+        onFrameSelection(event){
+            var dx = event.pageX - this.frameSelectionDiv.startPageX;
+            var dy = event.pageY - this.frameSelectionDiv.startPageY;  
+            this.frameSelectionDiv.width = Math.abs(dx);
+            this.frameSelectionDiv.height = Math.abs(dy);              
+            if(dx > 0 && dy > 0) {            
+                this.frameSelectionDiv.top = this.frameSelectionDiv.startY;
+                this.frameSelectionDiv.left = this.frameSelectionDiv.startX;
+            } else if(dx > 0 && dy < 0) {
+                this.frameSelectionDiv.top = this.frameSelectionDiv.startY + dy;
+                this.frameSelectionDiv.left = this.frameSelectionDiv.startX;
+            } else if(dx < 0 && dy > 0) {
+                this.frameSelectionDiv.top = this.frameSelectionDiv.startY;
+                this.frameSelectionDiv.left = this.frameSelectionDiv.startX + dx;
+            } else if(dx < 0 && dy < 0) {
+                this.frameSelectionDiv.top = this.frameSelectionDiv.startY + dy;
+                this.frameSelectionDiv.left = this.frameSelectionDiv.startX + dx;
+            }
+            //判断各个组件是否在方框内
+            var _this = this;
+            var rect = {
+                x: this.frameSelectionDiv.left,
+                y: this.frameSelectionDiv.top,
+                width: this.frameSelectionDiv.width,
+                height: this.frameSelectionDiv.height
+            };
+            var components = this.configData.components;
+            components.forEach(component => {
+                var itemRect = {
+                    x: component.style.position.x,
+                    y: component.style.position.y,
+                    width: component.style.position.w,
+                    height: component.style.position.h,
+                };
+                if(checkInRect(rect,itemRect)) {
+                    _this.addSelectedComponent(component);
+                } else {
+                    _this.removeSelectedComponent(component);
+                }
+            });
+        }, 
         onDrop(event) {
             event.preventDefault();        
             var infoJson = event.dataTransfer.getData('my-info');
