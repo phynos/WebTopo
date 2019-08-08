@@ -1,10 +1,10 @@
 <template>
     <div class="topo-render">
         <template v-for="(component,index) in configData.components">
-            <div class="surface-render-wrapper"
+            <div class="topo-render-wrapper"
                     :key="index"
                     @click="doClickComponent(component)"
-                    :class="{'surface-render-wrapper-clickable': component.dataBind.sn}"
+                    :class="{'topo-render-wrapper-clickable': component.action.length > 0 }"
                     v-show="component.style.visible == undefined? true:component.style.visible"
                     :style="{
                         left: component.style.position.x + 'px',
@@ -115,11 +115,11 @@ export default {
         position: relative;
         height: 100%;
 
-        .surface-render-wrapper {
+        .topo-render-wrapper {
             position: absolute;
         }
 
-        .surface-render-wrapper-clickable {
+        .topo-render-wrapper-clickable {
             cursor: pointer;
         }
     }
