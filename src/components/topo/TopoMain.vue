@@ -291,7 +291,7 @@ export default {
             }
             //处理默认值
             var fuid = uid;
-            component.uuid = fuid();
+            component.identifier = fuid();
             component.name = component.type + this.configData.components.length;
             component.style.visible = true;
             component.style.transform = 0;
@@ -384,7 +384,7 @@ export default {
             }
             var component = deepCopy(info); 
             var fuid = uid;
-            component.uuid = fuid();
+            component.identifier = fuid();
             component.name = component.type + this.configData.components.length;      
             component.style.visible = true;
             this.configData.components.push(component);                                    
@@ -392,6 +392,7 @@ export default {
             this.clickItem(component,this.configData.components.length - 1);
         },
         fullScreen() {
+            localStorage.setItem('topoData',JSON.stringify(this.configData));
             let {href} = this.$router.resolve({
                path: '/fullscreen',
                name: 'TopoFullscreen',

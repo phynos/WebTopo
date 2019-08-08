@@ -20,9 +20,8 @@ export default {
 
     },
     mounted() {
-        alert("dfdf");
-    }
 
+    }
 }
 </script>
 

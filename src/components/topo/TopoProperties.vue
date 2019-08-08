@@ -199,26 +199,26 @@
                             <tr>
                                 <td width="50%">事件</td>
                                 <td width="50%">
-                                    <q-select v-model="event.type" :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick'},{label:'鼠标移入',value:'mouseenter'},{label:'鼠标双击',value:'mouseleave'}]" />
+                                    <q-select emit-value map-options option-label="label" v-model="event.type" :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick'},{label:'鼠标移入',value:'mouseenter'},{label:'鼠标双击',value:'mouseleave'}]" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>动作</td>
                                 <td>
-                                    <q-select v-model="event.action" :options="[{label:'打开链接',value:'link'},{label:'赋值变量',value:'val'},{label:'展示隐藏',value:'visible'},{label:'调用服务',value:'service'}]" />
+                                    <q-select emit-value map-options  option-label="label" v-model="event.action" :options="[{label:'打开链接',value:'link'},{label:'赋值变量',value:'val'},{label:'展示隐藏',value:'visible'},{label:'调用服务',value:'service'}]" />
                                 </td>
                             </tr>
 
                             <tr v-if="event.action == 'visible'">
                                 <td>点击出现</td>
                                 <td>
-                                    <q-select filled multiple use-chips v-model="event.showItems" :options="generateTargetComponentOptions()" />
+                                    <q-select filled emit-value multiple use-chips map-options option-label="label" v-model="event.showItems" :options="generateTargetComponentOptions()" />
                                 </td>
                             </tr>
                             <tr v-if="event.action == 'visible'">
                                 <td>点击隐藏</td>
                                 <td>
-                                    <q-select filled multiple use-chips v-model="event.hideItems" :options="generateTargetComponentOptions()" />
+                                    <q-select filled emit-value multiple use-chips map-options option-label="label" v-model="event.hideItems" :options="generateTargetComponentOptions()" />
                                 </td>
                             </tr>
                         </table>
