@@ -105,6 +105,10 @@ import {
     deepCopy
 } from "@/assets/libs/utils";
 
+import {
+    checkInRange,checkInRect
+} from "@/assets/libs/topo";
+
 import { mapActions, mapGetters, mapState, mapMutations } from 'vuex'
 
 export default {
@@ -294,7 +298,29 @@ export default {
                 } else if(dx < 0 && dy < 0) {
                     this.frameSelectionDiv.top = this.frameSelectionDiv.startY + dy;
                     this.frameSelectionDiv.left = this.frameSelectionDiv.startX + dx;
-                }                                
+                }
+                //判断各个组件是否在方框内
+                var _this = this;
+                var rect = {
+                    x: this.frameSelectionDiv.left,
+                    y: this.frameSelectionDiv.top,
+                    width: this.frameSelectionDiv.width,
+                    height: this.frameSelectionDiv.height
+                };
+                var components = this.configData.components;
+                components.forEach(component => {
+                    var itemRect = {
+                        x: component.style.position.x,
+                        y: component.style.position.y,
+                        width: component.style.position.w,
+                        height: component.style.position.h,
+                    };
+                    if(checkInRect(rect,itemRect)) {
+                        _this.addSelectedComponent(component);
+                    } else {
+                        _this.removeSelectedComponent(component);
+                    }
+                });                                
             }            
         },
         onLayerMouseup(event) {
