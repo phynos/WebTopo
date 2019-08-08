@@ -20,7 +20,7 @@
                      class="topo-layer-view"
                      :class="{'topo-layer-view-selected': selectedComponentMap[component.identifier] == undefined? false:true }" 
                      @click.stop="clickComponent(index,component,$event)"
-                     @mousedown="controlMousedown(component,$event,index)"
+                     @mousedown.stop="controlMousedown(component,$event,index)"
                      @keyup.delete="removeItem(index,component)"
                      @keydown.up.exact="moveItems('up')"
                      @keydown.right.exact="moveItems('right')"
