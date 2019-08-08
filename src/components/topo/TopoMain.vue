@@ -183,6 +183,9 @@ export default {
             'clearSelectedComponent',
             'setLayerSelected'
         ]),
+        ...mapActions('topoEditor',[
+            'loadDefaultTopoData'
+        ]),
         controlMousedown(component,event,index) {
             if(event.ctrlKey) {                
                 return;
@@ -504,6 +507,9 @@ export default {
             });
             window.open(href, '_blank');
         }        
+    },
+    mounted() {
+        this.loadDefaultTopoData();
     }
 }
 </script>
