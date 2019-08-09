@@ -5,7 +5,7 @@
         <template v-if="isLayer">
             <q-input v-model="topoData.name" />
         </template>
-        <template v-else>
+        <template v-if="configObject != null && isLayer == false">
             <q-input v-model="configObject.name" />
         </template>
     </div>

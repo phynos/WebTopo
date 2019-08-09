@@ -357,6 +357,11 @@ export default {
                     _this.removeSelectedComponent(component);
                 }
             });
+            if(this.selectedComponents.length > 0) {
+                this.setLayerSelected(false);
+            } else {
+                this.setLayerSelected(true);
+            }
         }, 
         onDrop(event) {
             event.preventDefault();        
@@ -424,16 +429,11 @@ export default {
             return topoUtil.parseViewName(component);
         },
         clickItem(component, index) {
-            if(component == null) {  
-                this.setLayerSelected(true);            
-                this.clearSelectedComponent();           
+            this.setLayerSelected(false);
+            if(this.selectedComponentMap[component.identifier] == undefined) {
+                this.setSelectedComponent(component);
             } else {
-                this.setLayerSelected(false);
-                if(this.selectedComponentMap[component.identifier] == undefined) {
-                    this.setSelectedComponent(component);
-                } else {
-                    //如果已经选中，则不做任何处理
-                }
+                //如果已经选中，则不做任何处理
             }
         },
         clickComponent(index,component,event){//点击组件
