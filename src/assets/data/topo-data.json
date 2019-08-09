@@ -1,0 +1,204 @@
+{
+  "name": "--",
+  "components": [
+    {
+      "type": "rect",
+      "action": [
+        {
+          "type": "click",
+          "action": "visible",
+          "showItems": ["459e668d-74cb-9da0-83de-0344ca2e0bfd"],
+          "hideItems": []
+        }
+      ],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 101, "y": 146, "w": 82, "h": 49 },
+        "backColor": "transparent",
+        "foreColor": "grey",
+        "zIndex": 1,
+        "transform": 0,
+        "radius": 0,
+        "visible": true,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 101, "y": 146 } }
+      },
+      "identifier": "4e1ddf24-3b3b-b13c-a7c5-d0137067b1ae",
+      "name": "rect0"
+    },
+    {
+      "type": "text",
+      "action": [],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 132, "y": 39, "w": 552, "h": 51 },
+        "backColor": "transparent",
+        "foreColor": "#fc0808",
+        "zIndex": 1,
+        "transform": 0,
+        "text": "Web组态功能",
+        "textAlign": "center",
+        "fontSize": "28",
+        "fontFamily": { "label": "微软雅黑", "value": "微软雅黑" },
+        "visible": true,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 132, "y": 39 } }
+      },
+      "identifier": "fcf270c6-2079-c81b-26ef-d4e06bbd11de",
+      "name": "text1"
+    },
+    {
+      "type": "circular",
+      "action": [],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 220, "y": 177, "w": 60, "h": 58 },
+        "backColor": "transparent",
+        "foreColor": "grey",
+        "zIndex": 1,
+        "transform": 0,
+        "visible": true,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 220, "y": 177 } }
+      },
+      "identifier": "459e668d-74cb-9da0-83de-0344ca2e0bfd",
+      "name": "circular2"
+    },
+    {
+      "type": "rect",
+      "action": [
+        {
+          "type": "click",
+          "action": "visible",
+          "showItems": [],
+          "hideItems": ["459e668d-74cb-9da0-83de-0344ca2e0bfd"]
+        }
+      ],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 100, "y": 220, "w": 82, "h": 49 },
+        "backColor": "transparent",
+        "foreColor": "grey",
+        "zIndex": 1,
+        "transform": 0,
+        "radius": 0,
+        "visible": true,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 100, "y": 220 } }
+      },
+      "identifier": "4358bf28-8cd9-73ef-ddae-4b4c1908b4e1",
+      "name": "rect3"
+    },
+    {
+      "type": "text",
+      "action": [],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 154, "y": 114, "w": 109, "h": 30 },
+        "backColor": "transparent",
+        "foreColor": "#000000",
+        "zIndex": 1,
+        "transform": 0,
+        "text": "点击显示圆形",
+        "textAlign": "center",
+        "fontSize": 14,
+        "fontFamily": "Arial",
+        "visible": true,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 226, "y": 327 } }
+      },
+      "identifier": "09bc6147-33dd-cbae-b7d2-1bb80cda0c86",
+      "name": "text4"
+    },
+    {
+      "type": "text",
+      "action": [],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 152, "y": 272, "w": 109, "h": 30 },
+        "backColor": "transparent",
+        "foreColor": "#000000",
+        "zIndex": 1,
+        "transform": 0,
+        "text": "点击隐藏圆形",
+        "textAlign": "center",
+        "fontSize": 14,
+        "fontFamily": "Arial",
+        "visible": true,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 179, "y": 139 } }
+      },
+      "identifier": "6fb64872-9222-0f12-a89f-91233521ec32",
+      "name": "text5"
+    },
+    {
+      "type": "line-arrow",
+      "action": [],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 68, "y": 367, "w": 300, "h": 30 },
+        "backColor": "transparent",
+        "foreColor": "grey",
+        "zIndex": 1,
+        "transform": 0,
+        "lineWidth": 2,
+        "visible": true,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 235, "y": 420 } }
+      },
+      "identifier": "38ba8693-04c0-2021-dcde-6520757d1690",
+      "name": "line-arrow6"
+    },
+    {
+      "type": "chart-gauge",
+      "action": [],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 451, "y": 103, "w": 300, "h": 300 },
+        "backColor": "white",
+        "zIndex": 1,
+        "visible": true,
+        "transform": 0,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 549, "y": 203 } }
+      },
+      "identifier": "eb896e39-0027-fb07-97be-932fc3d7efa1",
+      "name": "chart-gauge8"
+    },
+    {
+      "type": "image",
+      "action": [],
+      "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
+      "style": {
+        "position": { "x": 439, "y": 415, "w": 205, "h": 115 },
+        "backColor": "transparent",
+        "zIndex": 1,
+        "url": "statics/topo/office/chair1.png",
+        "visible": true,
+        "transform": 0,
+        "borderWidth": 0,
+        "borderStyle": "solid",
+        "borderColor": "#ccccccff",
+        "temp": { "position": { "x": 574, "y": 497 } }
+      },
+      "identifier": "c4f8aa7d-cdbd-896e-2a19-e2ef39a0e949",
+      "name": "image8"
+    }
+  ]
+}
