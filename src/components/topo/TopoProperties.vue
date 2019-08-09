@@ -1,10 +1,15 @@
 <template>
 <div class="topo-properties">
-    <template v-if="configObject != null && isLayer == false">
-        <div class="topo-properties-nav">
-            <!-- <q-select v-model="curComponent" :options="componentOptions" @input="changeComponent" style="margin-right:0px;height:43px;border:none;" /> -->
+    <div class="topo-properties-nav">
+        <!-- <q-select v-model="curComponent" :options="componentOptions" @input="changeComponent" style="margin-right:0px;height:43px;border:none;" /> -->        
+        <template v-if="isLayer">
+            <q-input v-model="topoData.name" />
+        </template>
+        <template v-else>
             <q-input v-model="configObject.name" />
-        </div>      
+        </template>
+    </div>
+    <template v-if="configObject != null && isLayer == false">              
         <div class="topo-properties-tabs">
             <div class="topo-properties-tab" @click="changeTab(0)" :class="{'topo-properties-tab-active': tabIndex == 0}">样式</div>
             <div class="topo-properties-tab" @click="changeTab(1)" :class="{'topo-properties-tab-active': tabIndex == 1}">数据</div>
@@ -12,7 +17,7 @@
         </div>
         <div class="topo-properties-table">
             <div v-show="tabIndex == 0">
-                <template v-if="configObject != null && isLayer == false">
+                
                     <table style="display: none">
                         <tr>
                             <td width="50%" style="padding:5px 0px;background-color:#eee;">属性</td>
@@ -185,7 +190,7 @@
                             </table>
                         </q-expansion-item>
                     </q-list>
-                </template>
+                
             </div>
             <div v-show="tabIndex == 1">
 
@@ -302,7 +307,7 @@ export default {
     },
     computed: {
         ...mapState({
-            sceneConfigData: state => state.topoEditor.topoData,
+            topoData: state => state.topoEditor.topoData,
             selectedComponents: state => state.topoEditor.selectedComponents,
             selectedComponentMap: state => state.topoEditor.selectedComponentMap,
             configObject: state => state.topoEditor.selectedComponent,        
@@ -324,7 +329,7 @@ export default {
         },
         generateTargetComponentOptions() {            
             var options = [];
-            this.sceneConfigData.components.forEach(component => {
+            this.topoData.components.forEach(component => {
                 if (this.configObject.identifier != component.identifier) {
                     options.push({
                         label: component.name || component.type,
