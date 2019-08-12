@@ -106,7 +106,7 @@ import {
 } from "@/assets/libs/utils";
 
 import {
-    checkInRange,checkInRect
+    checkInRange,checkByPointInRect,checkByRectCollisionDetection
 } from "@/assets/libs/topo";
 
 import { mapActions, mapGetters, mapState, mapMutations } from 'vuex'
@@ -351,7 +351,7 @@ export default {
                     width: component.style.position.w,
                     height: component.style.position.h,
                 };
-                if(checkInRect(rect,itemRect)) {
+                if(checkByRectCollisionDetection(rect,itemRect)) {
                     _this.addSelectedComponent(component);
                 } else {
                     _this.removeSelectedComponent(component);
