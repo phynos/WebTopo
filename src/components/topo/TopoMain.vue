@@ -133,7 +133,9 @@ export default {
             selectedComponents: state => state.topoEditor.selectedComponents,
             selectedComponentMap: state => state.topoEditor.selectedComponentMap,
             configData: state => state.topoEditor.topoData,
-            selectedIsLayer: state => state.topoEditor.selectedIsLayer
+            selectedIsLayer: state => state.topoEditor.selectedIsLayer,
+            copyFlag: state => state.topoEditor.copyFlag,
+            copyCount: state => state.topoEditor.copyCount,            
         }),
         scaleFun:function () {
             var scale = this.selectedValue / 100;
@@ -143,9 +145,7 @@ export default {
     data() {
         return {
             edit: {
-                selectedComponent: {}, //当前选中的组件
                 hoverItem: '', //当前鼠标hover的组件
-                copyFromItem: null, //使用CTRL+C复制 的源组件                
             },
             moveItem: {
                 startX: 0,
@@ -181,7 +181,9 @@ export default {
             'addSelectedComponent',
             'removeSelectedComponent',
             'clearSelectedComponent',
-            'setLayerSelected'
+            'setLayerSelected',
+            'setCopyFlag',
+            'increaseCopyCount',
         ]),
         ...mapActions('topoEditor',[
             'loadDefaultTopoData'
@@ -450,16 +452,25 @@ export default {
             }                       
         },
         copyItem(index,component){ // 设定复制源            
-            this.edit.copyFromItem = deepCopy(component);
+            this.setCopyFlag(true);
         },
         pasteItem() {
-            if(this.edit.copyFromItem == null) {
-                return;
+            if(this.copyFlag) {
+                for(var key in this.selectedComponentMap) {
+                    var s = this.selectedComponentMap[key];
+                    var component = deepCopy(s);            
+                    component.style.position.x = component.style.position.x + 25 * (this.copyCount + 1);
+                    component.style.position.y = component.style.position.y + 25 * (this.copyCount + 1);
+                    var fuid = uid;
+                    component.identifier = fuid();
+                    component.name = component.type + this.configData.components.length;      
+                    component.style.visible = true;
+                    this.configData.components.push(component); 
+                }
+                this.increaseCopyCount();
+                //默认选中，并点击
+                // this.clickItem(component,this.configData.components.length - 1);                
             }
-            var component = this.edit.copyFromItem;            
-            component.style.position.x += 25;
-            component.style.position.y += 25;
-            this.addItem(component);
         },
         removeItem(index,component) { //移除组件
             var keys = [];
@@ -477,20 +488,7 @@ export default {
             }
             //删除后默认选择顶级节点
             this.clickItem(null, -1);    
-        },
-        addItem(info){ //增加组件   
-            if(this.checkAddComponent(info) == false) {
-                return;
-            }
-            var component = deepCopy(info); 
-            var fuid = uid;
-            component.identifier = fuid();
-            component.name = component.type + this.configData.components.length;      
-            component.style.visible = true;
-            this.configData.components.push(component);                                    
-            //默认选中，并点击
-            this.clickItem(component,this.configData.components.length - 1);
-        },
+        },        
         fullScreen() {
             localStorage.setItem('topoData',JSON.stringify(this.configData));
             let {href} = this.$router.resolve({

@@ -87,3 +87,11 @@ export const clearSelectedComponent = (state) => {
 export const setLayerSelected = (state,selected) => {
     state.selectedIsLayer = selected;
 }
+
+export const setCopyFlag = (state,flag) => {
+    state.copyFlag = flag;
+    state.copyCount = 0;
+}
+export const increaseCopyCount = (state) => {
+    state.copyCount++;
+}
