@@ -1,5 +1,12 @@
 {
   "name": "--",
+  "layer": {
+    "backColor": "",
+    "backgroundImage": "",
+    "widthHeightRatio": "",
+    "width": 1600,
+    "height": 900
+  },
   "components": [
     {
       "type": "rect",

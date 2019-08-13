@@ -235,6 +235,51 @@
             </div>
         </div>
     </template>
+    <template v-else>
+        <table style="margin-top: 10px">
+            <tr>
+                <td width="40%">
+                    BackColor
+                </td>
+                <td>
+                    <q-input v-model.lazy="topoData.layer.backColor" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    BackImage
+                </td>
+                <td>
+                    <q-input v-model.lazy="topoData.layer.backgroundImage" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    分辨率
+                </td>
+                <td>
+                    <q-select v-model="layerWH" :options="whOptions" />
+                </td>
+            </tr>
+            <tr v-if="layerWH == 'custom'">
+                <td>
+                    W
+                </td>
+                <td>
+                    <q-input v-model.lazy="topoData.layer.width" />
+                </td>
+            </tr>
+            <tr v-if="layerWH == 'custom'">
+                <td>
+                    H
+                </td>
+                <td>
+                    <q-input v-model.lazy="topoData.layer.height" />
+                </td>
+            </tr>
+        </table>
+        
+    </template>
 </div>
 </template>
 
@@ -303,9 +348,33 @@ export default {
                     value: "dotted"
                 },
             ],
+            whOptions: ['1024x768','1366x768','1280x800','1440x900','1600x900','1920x1080','custom'],     
+            layerWHTemp: '',
         }
     },
     computed: {
+        layerWH: {
+            get: function() {
+                if(!this.topoData.layer.width || !this.topoData.layer.height) {
+                    this.topoData.layer.width = 1600;
+                    this.topoData.layer.height = 900;  
+                }
+                if(this.layerWHTemp == '') {
+                    this.layerWHTemp = this.topoData.layer.width + 'x' + this.topoData.layer.height;
+                }
+                return this.layerWHTemp;
+            },
+            set: function(val) {
+                this.layerWHTemp = val;
+                if(val == 'custom') {
+                    
+                } else {
+                    var wh = val.split('x');
+                    this.topoData.layer.width = parseInt(wh[0]);
+                    this.topoData.layer.height = parseInt(wh[1]);
+                }
+            }
+        },
         ...mapState({
             topoData: state => state.topoEditor.topoData,
             selectedComponents: state => state.topoEditor.selectedComponents,

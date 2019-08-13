@@ -1,6 +1,13 @@
 export default {
   topoData: {
     name: '--',
+    layer: {
+      backColor: '',
+      backgroundImage: '',
+      widthHeightRatio: '',
+      width: 1600,
+      height: 900
+    },
     components: []
   }, //当前场景的组态数据
   selectedIsLayer: true, //当前选择的是不是layer层

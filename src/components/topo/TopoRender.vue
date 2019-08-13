@@ -1,5 +1,5 @@
 <template>
-    <div class="topo-render">
+    <div class="topo-render" :style="layerStyle" v-if="configData.layer">
         <template v-for="(component,index) in configData.components">
             <div class="topo-render-wrapper"
                     :key="index"
@@ -55,10 +55,29 @@ export default {
         ViewChartPie,
         ViewChartGauge,
     },
+    computed: {
+        layerStyle:function () {
+            var styles = [];
+            if(this.configData.layer.backColor) {
+                styles.push(`background-color: ${this.configData.layer.backColor}`);
+            }
+            if(this.configData.layer.backgroundImage) {
+                styles.push(`background-image: url("${this.configData.layer.backgroundImage}")`);
+            }
+            if(this.configData.layer.width > 0) {
+                styles.push(`width: ${this.configData.layer.width}px`);
+            }
+            if(this.configData.layer.height > 0) {
+                styles.push(`height: ${this.configData.layer.height}px`);
+            }
+            var style = styles.join(';');
+            return style;
+        }
+    },
     data() {
         return {
             configData: {
-                components: []
+                
             },
         }
     },
@@ -113,6 +132,10 @@ export default {
     .topo-render {
         overflow: auto;
         background-color: white;
+        background-clip: padding-box;
+        background-origin: padding-box;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         position: relative;
         height: 100%;
 

@@ -6,7 +6,7 @@
             id="surface-edit-layer"
             class="topo-layer"                            
             :class="{'topo-layer-view-selected': selectedIsLayer}"
-            :style="scaleFun"
+            :style="layerStyle"
             @click="onLayerClick($event)" 
             @mouseup="onLayerMouseup($event)" 
             @mousemove="onLayerMousemove($event)" 
@@ -137,9 +137,23 @@ export default {
             copyFlag: state => state.topoEditor.copyFlag,
             copyCount: state => state.topoEditor.copyCount,            
         }),
-        scaleFun:function () {
+        layerStyle:function () {
             var scale = this.selectedValue / 100;
-            return `transform:scale(${scale})`
+            var styles = [`transform:scale(${scale})`];
+            if(this.configData.layer.backColor) {
+                styles.push(`background-color: ${this.configData.layer.backColor}`);
+            }
+            if(this.configData.layer.backgroundImage) {
+                styles.push(`background-image: url("${this.configData.layer.backgroundImage}")`);
+            }
+            if(this.configData.layer.width > 0) {
+                styles.push(`width: ${this.configData.layer.width}px`);
+            }
+            if(this.configData.layer.height > 0) {
+                styles.push(`height: ${this.configData.layer.height}px`);
+            }
+            var style = styles.join(';');
+            return style;
         }
     },
     data() {
@@ -511,6 +525,10 @@ export default {
 .topo-main {
     border: #ccc solid 1px;
     background-color: white;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     position: relative;
     overflow-x: hidden;
     overflow-y: hidden;
