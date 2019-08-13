@@ -24,7 +24,7 @@ export default {
             ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
             ctx.lineTo(x + radius, y);
             ctx.quadraticCurveTo(x, y, x, y + radius);
-            ctx[type + 'Style'] = color || params.color;
+            ctx[type + 'Style'] = color;
             ctx.closePath();
             ctx[type]();
         },
