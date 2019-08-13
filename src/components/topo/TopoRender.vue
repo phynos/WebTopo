@@ -12,6 +12,7 @@
                         width: component.style.position.w + 'px',
                         height: component.style.position.h + 'px',
                         backgroundColor: component.style.backColor,
+                        zIndex: component.style.zIndex,
                         borderWidth: component.style.borderWidth + 'px',
                         borderStyle: component.style.borderStyle,
                         borderColor: component.style.borderColor,
