@@ -530,12 +530,7 @@ export default {
 
 <style lang="scss">
 .topo-main {
-    border: #ccc solid 1px;
-    background-color: white;
-    background-clip: padding-box;
-    background-origin: padding-box;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    border: #ccc solid 1px;    
     position: relative;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -543,8 +538,14 @@ export default {
     .topo-layer {
         width: 100%;
         height: 100%;
-        position: relative;
+        position: absolute;
+        transform-origin: left top;
         overflow: auto;
+        background-color: white;
+        background-clip: padding-box;
+        background-origin: padding-box;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
 
         .topo-frame-selection {
             background-color: #8787e7;
