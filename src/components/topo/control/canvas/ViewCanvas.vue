@@ -26,10 +26,12 @@ export default {
         hex2rgba(hex) {//颜色转换
             // hex格式如#ffffff       
             let colorArr = [];
-            for (let i = 1; i < 9; i += 2) {
+            for (let i = 1; i < 7; i += 2) {
                 colorArr.push(parseInt("0x" + hex.slice(i, i + 2))); // 16进制值转10进制       
             }
-            return `rgba(${colorArr.join(",")})`;
+            var alpha = parseInt("0x" + hex.slice(7, 9)) / 255; // 16进制值转10进制     
+            console.log(hex.slice(7, 9) + ',alpha：'+ alpha);  
+            return `rgba(${colorArr.join(",")},${alpha})`;
         },
         inRange(x, y, points) {//边界检测-只能检测凸边形（检测点在不在多边形里面）
             // points表示多边形的顶点集合     
