@@ -427,7 +427,7 @@ export default {
     .topo-properties-table {
         overflow-x: hidden;
         overflow-y: auto;
-        height: calc(100% - 36px);
+        height: calc(100% - 92px);
 
         table {
             width: 100%;
