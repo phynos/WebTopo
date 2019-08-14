@@ -368,7 +368,7 @@ export default {
                 } else {
                     _this.removeSelectedComponent(component);
                 }
-            });
+            });            
             if(this.selectedComponents.length > 0) {
                 this.setLayerSelected(false);
             } else {
@@ -494,8 +494,7 @@ export default {
             for(var i = keys.length - 1; i >= 0; i--) {
                 this.configData.components.splice(keys[i],1);
             }
-            //删除后默认选择顶级节点
-            this.clickItem(null, -1);    
+            this.setLayerSelected(true);  
         },        
         fullScreen() {
             localStorage.setItem('topoData',JSON.stringify(this.configData));

@@ -291,7 +291,6 @@ export default {
     name: 'TopoProperties',
     data() {
         return {
-            isLayer: false,
             tabIndex: 0,
             fontFamilyOptions: ['Arial',"Helvetica","sans-serif","宋体","黑体","微软雅黑"],
             textAlignOptions: ["left","right","center","justify"],
@@ -327,6 +326,7 @@ export default {
             topoData: state => state.topoEditor.topoData,
             selectedComponents: state => state.topoEditor.selectedComponents,
             selectedComponentMap: state => state.topoEditor.selectedComponentMap,
+            isLayer: state => state.topoEditor.selectedIsLayer,               
             configObject: state => state.topoEditor.selectedComponent,        
         })
     },
