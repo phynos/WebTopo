@@ -11,6 +11,7 @@
             @mouseup="onLayerMouseup($event)" 
             @mousemove="onLayerMousemove($event)" 
             @mousedown="onLayerMousedown($event)" 
+            @keyup.delete="removeItem()"
             @dragover.prevent
             @drop="onDrop">
             <template v-for="(component,index) in configData.components">
@@ -21,7 +22,7 @@
                      :class="{'topo-layer-view-selected': selectedComponentMap[component.identifier] == undefined? false:true }" 
                      @click.stop="clickComponent(index,component,$event)"
                      @mousedown.stop="controlMousedown(component,$event,index)"
-                     @keyup.delete="removeItem(index,component)"
+                     @keyup.delete="removeItem()"
                      @keydown.up.exact="moveItems('up')"
                      @keydown.right.exact="moveItems('right')"
                      @keydown.down.exact="moveItems('down')"
