@@ -204,13 +204,25 @@
                             <tr>
                                 <td width="50%">事件</td>
                                 <td width="50%">
-                                    <q-select emit-value map-options option-label="label" v-model="event.type" :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick'},{label:'鼠标移入',value:'mouseenter'},{label:'鼠标双击',value:'mouseleave'}]" />
+                                    <q-select 
+                                    emit-value 
+                                    map-options 
+                                    option-label="label" 
+                                    v-model="event.type" 
+                                    :option-disable="(item) => item === null ? true : item.cannotSelect" 
+                                    :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick',cannotSelect: true},{label:'鼠标移入',value:'mouseenter',cannotSelect: true},{label:'鼠标双击',value:'mouseleave',cannotSelect: true}]" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>动作</td>
                                 <td>
-                                    <q-select emit-value map-options  option-label="label" v-model="event.action" :options="[{label:'打开链接',value:'link'},{label:'赋值变量',value:'val'},{label:'展示隐藏',value:'visible'},{label:'调用服务',value:'service'}]" />
+                                    <q-select 
+                                    emit-value 
+                                    map-options  
+                                    option-label="label" 
+                                    v-model="event.action" 
+                                    :option-disable="(item) => item === null ? true : item.cannotSelect" 
+                                    :options="[{label:'打开链接',value:'link',cannotSelect: true},{label:'赋值变量',value:'val',cannotSelect: true},{label:'展示隐藏',value:'visible'},{label:'调用服务',value:'service',cannotSelect: true}]" />
                                 </td>
                             </tr>
 
@@ -387,13 +399,14 @@ export default {
         height: 35px;
         display: flex;
         border-bottom: #ccc solid 1px;
+        background-color: white;
 
         .topo-properties-tab {
             height: 35px;
             text-align: center;
             line-height: 35px;
             flex: 1;
-            background-color: white;
+            color: #666;
         }
 
         .topo-properties-tab+.topo-properties-tab {
@@ -402,11 +415,12 @@ export default {
 
         .topo-properties-tab:hover {
             cursor: pointer;
-            opacity: 0.8;
         }
 
         .topo-properties-tab-active {
-            background-color: #ddd;
+            color: #000;
+            border-bottom: #3388ff solid 2px;
+            font-weight: bold;
         }
     }
 

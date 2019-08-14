@@ -45,7 +45,7 @@
 - 安装quasar-cli：npm install -g @quasar/cli  
 ** 如果之前有安装过，可以先卸载
 npm uninstall -g vue-cli
-npm uninstall -g quasar-cli
+npm uninstall -g quasar-cli  
 ** 建议使用cnpm安装
 
 ### 运行开发服务器(使用默认主题)
