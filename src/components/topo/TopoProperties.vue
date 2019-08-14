@@ -235,7 +235,7 @@
             </div>
         </div>
     </template>
-    <template v-else>
+    <template v-if="isLayer">
         <table style="margin-top: 10px">
             <tr>
                 <td width="40%">

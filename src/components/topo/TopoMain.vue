@@ -315,10 +315,6 @@ export default {
                 this.frameSelectionDiv.height = 0;
                 this.frameSelectionDiv.top = 0;
                 this.frameSelectionDiv.left = 0;
-                //这里处理onLayerClick
-                if(this.selectedComponents.length <=0 ){
-                    this.setLayerSelected(true); 
-                }
             }
             this.flag = '';
         },     
