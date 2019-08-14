@@ -1,11 +1,11 @@
 {
-  "name": "--",
+  "name": "图层",
   "layer": {
-    "backColor": "",
+    "backColor": "#eee",
     "backgroundImage": "",
     "widthHeightRatio": "",
-    "width": 1600,
-    "height": 900
+    "width": 800,
+    "height": 600
   },
   "components": [
     {

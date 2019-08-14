@@ -56,7 +56,7 @@
             </div>
         </div>
     </vue-ruler-tool>
-    <div style="height: 40px;border-top: #ccc solid 1px;position:relative;">
+    <div style="height: 40px;border-top: #ccc solid 1px;position:relative;background-color:white;">
         <div style="position:absolute;left: 0px;top: 0px;" class="row">
             <div style="line-height:40px;height:40px;">
                 已选组件个数：{{selectedComponents.length}}
@@ -526,6 +526,7 @@ export default {
 
 <style lang="scss">
 .topo-main {
+    background-color: #aaa;
     border: #ccc solid 1px;    
     position: relative;
     overflow-x: hidden;

@@ -307,7 +307,12 @@ export default {
                     this.topoData.layer.height = 900;  
                 }
                 if(this.layerWHTemp == '') {
-                    this.layerWHTemp = this.topoData.layer.width + 'x' + this.topoData.layer.height;
+                    var wh = this.topoData.layer.width + 'x' + this.topoData.layer.height;
+                    if(this.whOptions.indexOf(wh,0) == -1) {
+                        this.layerWHTemp = 'custom';
+                    } else {
+                        this.layerWHTemp = wj;
+                    }
                 }
                 return this.layerWHTemp;
             },
