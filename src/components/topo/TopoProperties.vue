@@ -293,61 +293,9 @@ export default {
         return {
             isLayer: false,
             tabIndex: 0,
-            fontFamilyOptions: [{
-                    label: "Arial",
-                    value: "Arial"
-                },
-                {
-                    label: "Helvetica",
-                    value: "Helvetica"
-                },
-                {
-                    label: "sans-serif",
-                    value: "sans-serif"
-                },
-                {
-                    label: "宋体",
-                    value: "宋体"
-                },
-                {
-                    label: "黑体",
-                    value: "黑体"
-                },
-                {
-                    label: "微软雅黑",
-                    value: "微软雅黑"
-                },
-            ],
-            textAlignOptions: [{
-                    label: "Left",
-                    value: "left"
-                },
-                {
-                    label: "Right",
-                    value: "right"
-                },
-                {
-                    label: "Center",
-                    value: "center"
-                },
-                {
-                    label: "Justify",
-                    value: "justify"
-                },
-            ],
-            borderStyleOptions: [{
-                    label: "_____ (Solid)",
-                    value: "solid"
-                },
-                {
-                    label: "- - - (Dashed)",
-                    value: "dashed"
-                },
-                {
-                    label: ". . . (Dotted)",
-                    value: "dotted"
-                },
-            ],
+            fontFamilyOptions: ['Arial',"Helvetica","sans-serif","宋体","黑体","微软雅黑"],
+            textAlignOptions: ["left","right","center","justify"],
+            borderStyleOptions: ["solid","dashed","dotted"],
             whOptions: ['1024x768','1366x768','1280x800','1440x900','1600x900','1920x1080','custom'],     
             layerWHTemp: '',
         }
