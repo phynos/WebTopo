@@ -202,7 +202,7 @@
                     <template v-for="(event,index) in configObject.action">
                         <div :key="index" style="margin-top:10px;">
                             <div style="padding:5px;border-left:#ccc solid 1px;border-right:#ccc solid 1px;border-top:#ccc solid 1px;">
-                                Action-{{index+1}}
+                                交互-{{index+1}}
                                 <q-icon name="delete" color="negative" style="float:right;cursor:pointer;" @click.native="removeAction(index)"/>
                             </div>
                             <table >
