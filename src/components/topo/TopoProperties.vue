@@ -200,45 +200,51 @@
             <div v-show="tabIndex == 2">
                 <template v-if="configObject && configObject.action">
                     <template v-for="(event,index) in configObject.action">
-                        <table :key="index" style="margin-top:10px;">
-                            <tr>
-                                <td width="50%">事件</td>
-                                <td width="50%">
-                                    <q-select 
-                                    emit-value 
-                                    map-options 
-                                    option-label="label" 
-                                    v-model="event.type" 
-                                    :option-disable="(item) => item === null ? true : item.cannotSelect" 
-                                    :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick',cannotSelect: true},{label:'鼠标移入',value:'mouseenter',cannotSelect: true},{label:'鼠标双击',value:'mouseleave',cannotSelect: true}]" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>动作</td>
-                                <td>
-                                    <q-select 
-                                    emit-value 
-                                    map-options  
-                                    option-label="label" 
-                                    v-model="event.action" 
-                                    :option-disable="(item) => item === null ? true : item.cannotSelect" 
-                                    :options="[{label:'打开链接',value:'link',cannotSelect: true},{label:'赋值变量',value:'val',cannotSelect: true},{label:'展示隐藏',value:'visible'},{label:'调用服务',value:'service',cannotSelect: true}]" />
-                                </td>
-                            </tr>
+                        <div :key="index" style="margin-top:10px;">
+                            <div style="padding:5px;border-left:#ccc solid 1px;border-right:#ccc solid 1px;border-top:#ccc solid 1px;">
+                                Action-{{index+1}}
+                                <q-icon name="delete" color="negative" style="float:right;cursor:pointer;" @click.native="removeAction(index)"/>
+                            </div>
+                            <table >
+                                <tr>
+                                    <td width="50%">事件</td>
+                                    <td width="50%">
+                                        <q-select 
+                                        emit-value 
+                                        map-options 
+                                        option-label="label" 
+                                        v-model="event.type" 
+                                        :option-disable="(item) => item === null ? true : item.cannotSelect" 
+                                        :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick',cannotSelect: true},{label:'鼠标移入',value:'mouseenter',cannotSelect: true},{label:'鼠标双击',value:'mouseleave',cannotSelect: true}]" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>动作</td>
+                                    <td>
+                                        <q-select 
+                                        emit-value 
+                                        map-options  
+                                        option-label="label" 
+                                        v-model="event.action" 
+                                        :option-disable="(item) => item === null ? true : item.cannotSelect" 
+                                        :options="[{label:'打开链接',value:'link',cannotSelect: true},{label:'赋值变量',value:'val',cannotSelect: true},{label:'展示隐藏',value:'visible'},{label:'调用服务',value:'service',cannotSelect: true}]" />
+                                    </td>
+                                </tr>
 
-                            <tr v-if="event.action == 'visible'">
-                                <td>点击出现</td>
-                                <td>
-                                    <q-select filled emit-value multiple use-chips map-options option-label="label" v-model="event.showItems" :options="generateTargetComponentOptions()" />
-                                </td>
-                            </tr>
-                            <tr v-if="event.action == 'visible'">
-                                <td>点击隐藏</td>
-                                <td>
-                                    <q-select filled emit-value multiple use-chips map-options option-label="label" v-model="event.hideItems" :options="generateTargetComponentOptions()" />
-                                </td>
-                            </tr>
-                        </table>
+                                <tr v-if="event.action == 'visible'">
+                                    <td>点击出现</td>
+                                    <td>
+                                        <q-select filled emit-value multiple use-chips map-options option-label="label" v-model="event.showItems" :options="generateTargetComponentOptions()" />
+                                    </td>
+                                </tr>
+                                <tr v-if="event.action == 'visible'">
+                                    <td>点击隐藏</td>
+                                    <td>
+                                        <q-select filled emit-value multiple use-chips map-options option-label="label" v-model="event.hideItems" :options="generateTargetComponentOptions()" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </template>
                     <div style="width:100%;padding:10px 10px 10px 10px;">
                         <q-btn label="Add" outline @click="addAction" style="width:100%;" />
@@ -372,6 +378,9 @@ export default {
                 }
             });
             return options;
+        },
+        removeAction(index){
+            this.configObject.action.splice(index,1);
         },
         addAction() {
             var action = {
