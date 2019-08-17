@@ -526,7 +526,7 @@ export default {
 
 <style lang="scss">
 .topo-main {
-    background-color: #aaa;
+    background-color: white;
     border: #ccc solid 1px;    
     position: relative;
     overflow-x: hidden;
