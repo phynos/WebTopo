@@ -215,7 +215,7 @@
                                         option-label="label" 
                                         v-model="event.type" 
                                         :option-disable="(item) => item === null ? true : item.cannotSelect" 
-                                        :options="[{label:'点击',value:'click'},{label:'双击',value:'dbclick',cannotSelect: true},{label:'鼠标移入',value:'mouseenter',cannotSelect: true},{label:'鼠标双击',value:'mouseleave',cannotSelect: true}]" />
+                                        :options="[{label:'点击',value:'click'},{label:'双击',value:'dblclick'},{label:'鼠标移入',value:'mouseenter',cannotSelect: true},{label:'鼠标双击',value:'mouseleave',cannotSelect: true}]" />
                                     </td>
                                 </tr>
                                 <tr>
