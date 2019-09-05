@@ -4,6 +4,7 @@
             <div class="topo-render-wrapper"
                     :key="index"
                     @click="doClickComponent(component)"
+                    @dblclick="doDbClickComponent(component)"
                     :class="{'topo-render-wrapper-clickable': component.action.length > 0 }"
                     v-show="component.style.visible == undefined? true:component.style.visible"
                     :style="{
@@ -86,28 +87,38 @@ export default {
         parseView(component) {
             return topoUtil.parseViewName(component);
         },
-        doClickComponent(component){
-            //处理action
-            var _this = this;
+        doClickComponent(component){         
             for(var i = 0; i < component.action.length; i++) {
                 var action = component.action[i];                
                 if(action.type == 'click') {  
-                    if(action.action == 'visible'){
-                        if(action.showItems.length > 0) {
-                            action.showItems.forEach(identifier => {
-                                _this.showComponent(identifier,true);
-                            });
-                        }
-                        if(action.hideItems.length > 0) {
-                            action.hideItems.forEach(identifier => {
-                                _this.showComponent(identifier,false);
-                            });
-                        }
-                    } else if(action.action == 'service') {                        
-                        _this.sendFun(action);
-                    }                    
+                     this.handleComponentActuib(action);                  
                 }
             }        
+        },
+        doDbClickComponent(component){      
+            for(var i = 0; i < component.action.length; i++) {
+                var action = component.action[i];                
+                if(action.type == 'dblclick') {  
+                     this.handleComponentActuib(action);                  
+                }
+            }
+        },
+        handleComponentActuib(action){
+            var _this = this;
+            if(action.action == 'visible'){
+                if(action.showItems.length > 0) {
+                    action.showItems.forEach(identifier => {
+                        _this.showComponent(identifier,true);
+                    });
+                }
+                if(action.hideItems.length > 0) {
+                    action.hideItems.forEach(identifier => {
+                        _this.showComponent(identifier,false);
+                    });
+                }
+            } else if(action.action == 'service') {                        
+                _this.sendFun(action);
+            } 
         },
         showComponent(identifier,visible) {
             console.log('show:' + identifier + ',visible:' + visible);
