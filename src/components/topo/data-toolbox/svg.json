@@ -7,7 +7,7 @@
         "icon": "stop",
         "isFontIcon": true,
         "info": {
-            "type": "svg-ellipse",
+            "type": "svg-image",
             "action": [],
             "dataBind": {
                 "sn": "",
@@ -25,6 +25,31 @@
                 "backColor": "transparent",
                 "zIndex": 1,
                 "url": "statics/topo/svg/ellipse2.svg"
+            }
+        }
+    },{
+        "text": "动画演示1",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/demo1.svg"
             }
         }
     }

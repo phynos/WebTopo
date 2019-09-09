@@ -10,7 +10,7 @@ pluginspage="http://www.adobe.com/svg/viewer/install/" />
 import svgView from './ViewSvg';
 
 export default {
-    name: 'ViewSvgEllipse',
+    name: 'ViewSvgImage',
     extends: svgView,
     methods: {        
         onResize() {

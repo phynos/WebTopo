@@ -22,7 +22,7 @@ topoUtil.viewRegisterMap = {
   "fingerprint-flow":"view-fingerprint-flow",
   "image-state": "view-image-state",
   "pedestrian-detection": "view-pedestrian-detection",
-  "svg-ellipse": "view-svg-ellipse",
+  "svg-image": "view-svg-image",
 };
 
 //优先匹配map，否则将自动匹配
