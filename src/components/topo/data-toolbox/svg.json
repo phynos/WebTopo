@@ -4,7 +4,7 @@
     "opened": false,
     "items": [{
         "text": "矩形",
-        "icon": "fiber_manual_record",
+        "icon": "stop",
         "isFontIcon": true,
         "info": {
             "type": "svg-ellipse",
