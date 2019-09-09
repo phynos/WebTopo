@@ -22,13 +22,15 @@ topoUtil.viewRegisterMap = {
   "fingerprint-flow":"view-fingerprint-flow",
   "image-state": "view-image-state",
   "pedestrian-detection": "view-pedestrian-detection",
+  "svg-ellipse": "view-svg-ellipse",
 };
 
+//优先匹配map，否则将自动匹配
 topoUtil.parseViewName = function (component) {
   var viewName = topoUtil.viewRegisterMap[component.type];
   if(viewName == undefined) {
     console.error(`无法匹配到控件，当前组件类型=${component.type}`);    
-    viewName = "view-text";
+    viewName = "view-" + component.type;
   }
   return viewName;
 };

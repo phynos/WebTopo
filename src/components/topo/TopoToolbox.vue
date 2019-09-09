@@ -34,6 +34,7 @@
 import jsonBase from './data-toolbox/base.json';
 import jsonChart from './data-toolbox/chart.json';
 import jsonOffice from './data-toolbox/office.json';
+import jsonSvg from './data-toolbox/svg.json';
 export default {
     name: 'TopoToolbox',
     data() {
@@ -55,6 +56,7 @@ export default {
         this.toolbox.push(jsonBase);
         this.toolbox.push(jsonChart);
         this.toolbox.push(jsonOffice);
+        this.toolbox.push(jsonSvg);        
     }
 }
 </script>

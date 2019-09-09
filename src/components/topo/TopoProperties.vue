@@ -329,7 +329,7 @@ export default {
                     if(this.whOptions.indexOf(wh,0) == -1) {
                         this.layerWHTemp = 'custom';
                     } else {
-                        this.layerWHTemp = wj;
+                        this.layerWHTemp = wh;
                     }
                 }
                 return this.layerWHTemp;

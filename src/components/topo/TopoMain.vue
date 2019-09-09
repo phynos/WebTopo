@@ -101,6 +101,8 @@ import ViewChart from './control/chart/ViewChart';
 import ViewChartPie from './control/chart/ViewChartPie';
 import ViewChartGauge from './control/chart/ViewChartGauge';
 
+import ViewSvgEllipse from './control/svg/ViewSvgEllipse';
+
 import uid from '@/assets/libs/uid.js'
 
 import topoUtil from './util/topo-util';
@@ -128,6 +130,7 @@ export default {
         ViewChart,
         ViewChartPie,
         ViewChartGauge,
+        ViewSvgEllipse,
         VueRulerTool
     },
     props: [],

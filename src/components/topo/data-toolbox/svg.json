@@ -1,0 +1,32 @@
+{
+    "title": "SVG控件",
+    "icon": "payment",
+    "opened": false,
+    "items": [{
+        "text": "矩形",
+        "icon": "fiber_manual_record",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-ellipse",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 100,
+                    "h": 100
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/ellipse2.svg"
+            }
+        }
+    }
+]
+}
