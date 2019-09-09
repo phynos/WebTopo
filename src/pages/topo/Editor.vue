@@ -48,7 +48,7 @@ export default {
     position: relative;
     width: 100%;
     height: calc(100vh - 0px);
-    background-color: white;
+    background-color: #eee;
 
     .topo-toolbox {
         width: 100%;
