@@ -1,0 +1,57 @@
+{
+    "title": "SVG-电力元件",
+    "icon": "payment",
+    "opened": false,
+    "items": [{
+        "text": "预调电容器-水平",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 100,
+                    "h": 100
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg-dianli/PresetCapacitor_H.svg"
+            }
+        }
+    },{
+        "text": "预调电容器-垂直",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-image",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg-dianli/PresetCapacitor_V.svg"
+            }
+        }
+    }
+]
+}
