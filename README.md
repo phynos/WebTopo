@@ -72,5 +72,10 @@ $ quasar dev -m electron
 ### 使用iOS主题...
 $ quasar dev -m electron -t ios
 
+## 如何打包
+1. 编辑quasar.conf.js下的publicPath，修改为实际的名称
+2. 去编译后的dist文件夹将文件拷贝到web服务器即可
+3. 目前publicPath默认为WebTopo，所以构建后访问http://127.0.0.1/WebTopo/即可
+
 ## 运行截图
 ![avatar](/doc/shot.png)

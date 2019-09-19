@@ -4,6 +4,11 @@ function rootPath(dir) {
   return path.join(__dirname, '.', dir)
 }
 
+const APP_INFO = {
+  NAME: "WebTopo",
+  PKG_NAME: "WebTopo"
+}
+
 module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
@@ -22,8 +27,13 @@ module.exports = function (ctx) {
     ],
     supportIE: true,
     build: {
+      env: {
+        APP_NAME: JSON.stringify(APP_INFO.NAME),
+        PKG_NAME: JSON.stringify(APP_INFO.PKG_NAME)
+      },
       scopeHoisting: true,
       vueRouterMode: 'history',
+      publicPath: "/WebTopo",
       vueCompiler: true,
       gzip: true,
       // analyze: true,
