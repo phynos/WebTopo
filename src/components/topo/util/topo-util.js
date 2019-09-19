@@ -1,8 +1,7 @@
 const topoUtil = {};
 
-topoUtil.viewRegisterMap = {
-  "text": "view-text",
-  "image": "view-image",
+//如果需要手动映射type和组件的关系，请在这里配置
+topoUtil.viewRegisterMap = {  
   "triangle": "view-triangle",
   "rect": "view-rect",
   "circular": "view-circular",
@@ -13,23 +12,13 @@ topoUtil.viewRegisterMap = {
   "chart-bar": "view-chart",
   "chart-pie": "view-chart-pie",
   "chart-gauge": "view-chart-gauge",
-  "video": "view-video",
-  "signal": "view-signal",
-  "list": "view-list",
-  "image-list": "view-image-list",
-  "image-carousel": "view-image-carousel",
-  "fingerprint":"view-fingerprint",
-  "fingerprint-flow":"view-fingerprint-flow",
-  "image-state": "view-image-state",
-  "pedestrian-detection": "view-pedestrian-detection",
-  "svg-image": "view-svg-image",
 };
 
 //优先匹配map，否则将自动匹配
 topoUtil.parseViewName = function (component) {
   var viewName = topoUtil.viewRegisterMap[component.type];
   if(viewName == undefined) {
-    console.error(`无法匹配到控件，当前组件类型=${component.type}`);    
+    console.info(`没有手动配置组件映射，将根据数据的type自动匹配，当前组件类型=${component.type}`);    
     viewName = "view-" + component.type;
   }
   return viewName;
