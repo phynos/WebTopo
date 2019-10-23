@@ -14,15 +14,15 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-	  "@quasar/extras": "^1.0.0",
-    "quasar": "^1.0.0-beta.0",
+	  "@quasar/extras": "^1.3.2",
+    "quasar": "^1.2.5",
     "moment": "^2.24.0",
     "echarts": "^4.2.1",
     "axios": "^0.19.0",	  
     "vue-i18n": "^7.3.3"
   },
   "devDependencies": {
-	  "@quasar/app": "^1.0.0-beta.0",
+	  "@quasar/app": "^1.2.2",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.10.0",
