@@ -41,6 +41,26 @@ export default {
     },
     mounted() {
         this.onResize();
+        
+        
+        if(this.editMode == false) {
+            var _this = this;
+            var i = 0;
+            debugger
+            this.SimpleEventBus.on("first-event",function(msg){
+                if(msg % 2) {
+                    _this.detail.style.foreColor = "blue";
+                } else {
+                    _this.detail.style.foreColor = "red";
+                }
+                _this.onResize();                
+            });
+            //这里模拟服务器发送消息
+            setInterval(() => {
+                this.SimpleEventBus.emit('first-event', i);
+                i++;
+            }, 500);
+        }
     }
 }
 </script>

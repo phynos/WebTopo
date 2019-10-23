@@ -11,10 +11,11 @@ const APP_INFO = {
 
 module.exports = function (ctx) {
   return {
-    // app plugins (/src/plugins)
-    plugins: [
+    boot: [
+      // references /src/boot/<name>.js
       'i18n',
-      'axios'
+      'axios',
+      'EventBus'
     ],
     css: [
       'app.styl'
