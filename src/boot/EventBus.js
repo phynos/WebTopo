@@ -1,7 +1,7 @@
 
-import EventBus from 'src/assets/libs/simpleEventBus.js'
+import simpleEventBus from 'src/assets/libs/simpleEventBus.js'
 
 
 export default ({ app, router, store, Vue }) => {
-    Vue.prototype.SimpleEventBus = EventBus;
+    Vue.prototype.SimpleEventBus = simpleEventBus;
   }
