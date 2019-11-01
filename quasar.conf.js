@@ -34,7 +34,8 @@ module.exports = function (ctx) {
       },
       scopeHoisting: true,
       vueRouterMode: 'history',
-      publicPath: "/WebTopo",
+      //publicPath: "/WebTopo",
+      publicPath:"/WebTopo/dist/spa/", //注意：这里请根据实际情况部署
       vueCompiler: true,
       gzip: true,
       // analyze: true,
