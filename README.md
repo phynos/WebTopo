@@ -82,9 +82,6 @@ npm uninstall -g quasar-cli
 
 ### 运行开发服务器(使用默认主题)
 $ quasar dev
-### 运行开发服务器(使用特定主题)
-$ quasar dev -t mat
-$ quasar dev -t ios
 ### 运行在特定端口
 $ quasar dev -p 9090
 ### PWA模式
