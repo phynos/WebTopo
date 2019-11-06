@@ -41,6 +41,7 @@ import ViewChartPie from './control/chart/ViewChartPie';
 import ViewChartGauge from './control/chart/ViewChartGauge';
 
 import ViewSvgImage from './control/svg/ViewSvgImage';
+import ViewSvgStatic from './control/svg/ViewSvgStatic';
 
 import topoUtil from './util/topo-util';
 
@@ -59,6 +60,7 @@ export default {
         ViewChartPie,
         ViewChartGauge,
         ViewSvgImage,
+        ViewSvgStatic
     },
     computed: {
         layerStyle:function () {

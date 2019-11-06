@@ -7,7 +7,7 @@
         "icon": "stop",
         "isFontIcon": true,
         "info": {
-            "type": "svg-image",
+            "type": "svg-static",
             "action": [],
             "dataBind": {
                 "sn": "",
@@ -32,7 +32,7 @@
         "icon": "stop",
         "isFontIcon": true,
         "info": {
-            "type": "svg-image",
+            "type": "svg-static",
             "action": [],
             "dataBind": {
                 "sn": "",

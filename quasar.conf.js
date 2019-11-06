@@ -15,6 +15,7 @@ module.exports = function (ctx) {
       // references /src/boot/<name>.js
       'i18n',
       'axios',
+      'x2js',
       'EventBus'
     ],
     css: [

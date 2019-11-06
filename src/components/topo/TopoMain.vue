@@ -102,6 +102,7 @@ import ViewChartPie from './control/chart/ViewChartPie';
 import ViewChartGauge from './control/chart/ViewChartGauge';
 
 import ViewSvgImage from './control/svg/ViewSvgImage';
+import ViewSvgStatic from './control/svg/ViewSvgStatic';
 
 import uid from '@/assets/libs/uid.js'
 
@@ -131,6 +132,7 @@ export default {
         ViewChartPie,
         ViewChartGauge,
         ViewSvgImage,
+        ViewSvgStatic,
         VueRulerTool
     },
     props: [],

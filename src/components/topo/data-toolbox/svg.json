@@ -52,6 +52,206 @@
                 "url": "statics/topo/svg/demo1.svg"
             }
         }
+    },{
+        "text": "载入框1",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-static",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/loading/loading-1.svg"
+            }
+        }
+    },{
+        "text": "载入框2",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-static",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/loading/loading-2.svg"
+            }
+        }
+    },{
+        "text": "载入框3",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-static",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/loading/loading-3.svg"
+            }
+        }
+    },{
+        "text": "载入框4",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-static",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/loading/loading-4.svg"
+            }
+        }
+    },{
+        "text": "载入框5",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-static",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/loading/loading-5.svg"
+            }
+        }
+    },{
+        "text": "载入框6",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-static",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/loading/loading-6.svg"
+            }
+        }
+    },{
+        "text": "载入框7",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-static",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/loading/loading-7.svg"
+            }
+        }
+    },{
+        "text": "载入框8",
+        "icon": "stop",
+        "isFontIcon": true,
+        "info": {
+            "type": "svg-static",
+            "action": [],
+            "dataBind": {
+                "sn": "",
+                "title": "",
+                "biz": "",
+                "queryParam": {}
+            },
+            "style": {
+                "position": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 200,
+                    "h": 200
+                },
+                "backColor": "transparent",
+                "zIndex": 1,
+                "url": "statics/topo/svg/loading/loading-8.svg"
+            }
+        }
     }
 ]
 }
