@@ -49,8 +49,7 @@ github预览访问如下地址：https://phynos.github.io/WebTopo/dist/spa
 1. 定义数据文件（参见 \src\components\topo\data-toolbox下的json文件）
 2. 新增控件，根据数据文件的数据自己实现显示方式（在\src\components\topo\control下新增控件，继承组件，可参考其他组件实现方式，整个思想就是利用第一步的数据绘制dom节点或canvas图像）
 3. 注册控件到工具栏（在TopoToolbox.vue中）
-4. 注册控件到工作界面（在TopoMain.vue中）
-5. 注册界面到渲染界面（这一步可选，在TopoRender.vue中）  
+4. 注册控件（在TopoBase.vue中）
 其实整体思想很简单，就是定义一些数据，然后自己新增vue组件根据这些数据控制渲染和行为，其他的一些组态编辑操作是公共的。
 
 ## 组件和服务器通讯

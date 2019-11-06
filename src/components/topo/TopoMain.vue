@@ -86,23 +86,7 @@
 
 <script>
 import VueRulerTool from './ruler';
-
-import ViewText from './control/ViewText';
-import ViewImage from './control/ViewImage';
-
-import ViewCircular from './control/canvas/ViewCircular';
-import ViewLine from './control/canvas/ViewLine';
-import ViewLineArrow from './control/canvas/ViewLineArrow';
-import ViewLineWave from './control/canvas/ViewLineWave';
-import ViewRect from './control/canvas/ViewRect';
-import ViewTriangle from './control/canvas/ViewTriangle';
-
-import ViewChart from './control/chart/ViewChart';
-import ViewChartPie from './control/chart/ViewChartPie';
-import ViewChartGauge from './control/chart/ViewChartGauge';
-
-import ViewSvgImage from './control/svg/ViewSvgImage';
-import ViewSvgStatic from './control/svg/ViewSvgStatic';
+import TopoBase from './TopoBase';
 
 import uid from '@/assets/libs/uid.js'
 
@@ -119,20 +103,8 @@ import { mapActions, mapGetters, mapState, mapMutations } from 'vuex'
 
 export default {
     name: 'TopoMain',
-    components: {
-        ViewText,
-        ViewImage,
-        ViewCircular,
-        ViewLine,
-        ViewLineArrow,
-        ViewLineWave,
-        ViewRect,
-        ViewTriangle,
-        ViewChart,
-        ViewChartPie,
-        ViewChartGauge,
-        ViewSvgImage,
-        ViewSvgStatic,
+    extends: TopoBase,
+    components: {        
         VueRulerTool
     },
     props: [],
