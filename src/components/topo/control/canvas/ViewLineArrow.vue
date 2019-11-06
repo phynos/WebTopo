@@ -10,19 +10,18 @@ import canvasView from './ViewCanvas';
 export default {
     name: 'ViewLineArrow',
     extends: canvasView,
+    data() {
+        return {
+            FACTOR_H: 5, //箭头 水平高度倍数
+            FACTOR_V: 4, //箭头 垂直长度倍数
+        }
+    },
     methods: {
-        drawArrow(ctx, x1, y1, x2, y2, color) { // (x1, y1)是线段起点  (x2, y2)是线段终点
-            ctx.beginPath();
-            // 反正切函数计算夹角     
-            let endRadians = Math.atan((y2 - y1) / (x2 - x1));
-            // 三角形的底边与线段垂直，所以还要再转 π / 2   
-            endRadians += ((x2 >= x1) ? 90 : -90) * Math.PI / 180;
+        drawArrow(ctx, x1, y1, x2, y2,lineWidth, color) { // (x1, y1)是线段起点  (x2, y2)是线段终点
             ctx.beginPath(); // 坐标原点 => (x2, y2)   
-            ctx.translate(x2, y2);
-            ctx.rotate(endRadians);
-            ctx.moveTo(0, 0);
-            ctx.lineTo(5, 15);
-            ctx.lineTo(-5, 15);
+            ctx.moveTo(x2, y2);
+            ctx.lineTo(x2 - lineWidth * this.FACTOR_H, y2 - lineWidth * this.FACTOR_V);
+            ctx.lineTo(x2 - lineWidth * this.FACTOR_H, y2 + lineWidth * this.FACTOR_V);
             ctx.closePath();
             ctx.fillStyle = color; //设置线的颜色状态
             ctx.fill();
@@ -47,12 +46,14 @@ export default {
                 x2 = w,
                 y2 = h / 2;
             var color = this.getForeColor();
-            var lineWidth = this.detail.style.lineWidth;
-            if (lineWidth == undefined || typeof lineWidth != 'number') {
+            var lineWidth = this.detail.style.lineWidth;            
+            if (lineWidth == undefined) {
                 lineWidth = 2;
+            } else if(typeof lineWidth == 'string') {
+                lineWidth = parseInt(lineWidth);
             }
-            this.drawLine(ctx, x1, y1, x2, y2, lineWidth, color);
-            this.drawArrow(ctx, x1, y1, x2, y2, color);
+            this.drawLine(ctx, x1, y1, x2 - this.FACTOR_H * lineWidth, y2, lineWidth, color);
+            this.drawArrow(ctx, x1, y1, x2, y2, lineWidth, color);
         }
     },
     mounted() {
