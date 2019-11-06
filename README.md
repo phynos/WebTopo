@@ -50,6 +50,7 @@ github预览访问如下地址：https://phynos.github.io/WebTopo/dist/spa
 2. 新增控件，根据数据文件的数据自己实现显示方式（在\src\components\topo\control下新增控件，继承组件，可参考其他组件实现方式，整个思想就是利用第一步的数据绘制dom节点或canvas图像）
 3. 注册控件到工具栏（在TopoToolbox.vue中）
 4. 注册控件（在TopoBase.vue中）
+
 其实整体思想很简单，就是定义一些数据，然后自己新增vue组件根据这些数据控制渲染和行为，其他的一些组态编辑操作是公共的。
 
 ## 组件和服务器通讯
@@ -70,16 +71,16 @@ github预览访问如下地址：https://phynos.github.io/WebTopo/dist/spa
 未开始
 
 
-## 构建过程[更新]
+## 构建过程
 - 安装NodeJs
 - 安装vue-cli：npm install -g @vue/cli
-- 安装quasar-cli：npm install -g @quasar/cli  
-** 如果之前有安装过，可以先卸载
-npm uninstall -g vue-cli
-npm uninstall -g quasar-cli  
-** 建议使用cnpm安装
+- 安装quasar-cli：npm install -g @quasar/cli
+- 进入根目录，执行安装npm install（建议使用cnpm安装）  
+- 启动项目：quasar dev  
 
-### 运行开发服务器(使用默认主题)
+更多构建功能请参考quasar官网，以下是一些常用的构建命令
+
+### 运行开发服务器
 $ quasar dev
 ### 运行在特定端口
 $ quasar dev -p 9090
