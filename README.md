@@ -90,12 +90,10 @@ $ quasar dev -m pwa
 $ quasar dev -m cordova -T [android|ios] -t [mat|ios]
 ### Electron应用
 $ quasar dev -m electron
-### 使用iOS主题...
-$ quasar dev -m electron -t ios
 
 ## 如何打包
 1. 编辑quasar.conf.js下的publicPath，修改为实际的名称
-2. 去编译后(使用命令quasr build)的dist文件夹将文件拷贝到web服务器即可
+2. 去编译后(使用命令quasar build)的dist文件夹将文件拷贝到web服务器即可
 3. 目前publicPath默认为WebTopo，所以构建后访问http://127.0.0.1/WebTopo/即可  
 注意：由于VUE使用history模式，使用nginx等服务器需要解决路径404问题（本项目只有2个url）
 
