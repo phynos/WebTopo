@@ -87,9 +87,11 @@ $ quasar dev -p 9090
 ### PWA模式
 $ quasar dev -m pwa
 ### 手机App
-$ quasar dev -m cordova -T [android|ios] -t [mat|ios]
+$ quasar dev -m cordova
 ### Electron应用
 $ quasar dev -m electron
+
+注意：Electron应用等请参考官网配置相应的开发环境
 
 ## 如何打包
 1. 编辑quasar.conf.js下的publicPath，修改为实际的名称
