@@ -4,6 +4,87 @@ import {
     uid
 } from 'quasar';
 
+
+export const execute = (state,command) => {
+    //暂时不做参数校验
+    //在这里分发命令--这里暂时先用switch分发，应该用表格分发
+    switch (command.op) {
+        case 'add':
+            var component = command.component;                
+            var fuid = uid;
+            component.identifier = fuid();
+            component.name = component.type + state.topoData.components.length;
+            component.style.visible = true;
+            component.style.transform = 0;
+            component.style.borderWidth = component.style.borderWidth? component.style.borderWidth : 0;
+            component.style.borderStyle = component.style.borderStyle? component.style.borderStyle : 'solid';
+            component.style.borderColor = component.style.borderColor? component.style.borderColor : '#ccccccff';            
+            //component.style.fontFamily = "Arial";
+            state.topoData.components.push(component);            
+            break;
+        case 'del':
+            var keys = [];
+            for(var i = 0; i < state.topoData.components.length; i++) {
+                var identifier = state.topoData.components[i].identifier;
+                if(state.selectedComponentMap[identifier] != undefined) {
+                    keys.push(i);
+                }
+            }
+            //排序
+            keys.sort((a,b) =>{ return a-b;});
+            //逆向循环删除
+            for(var i = keys.length - 1; i >= 0; i--) {
+                state.topoData.components.splice(keys[i],1);
+            }            
+            break;
+        case 'move':
+
+            break;
+        default:
+            break;
+    }
+    //记录操作
+    state.undoStack.push(command); 
+}
+
+export const undo = (state) => {
+    var command = state.undoStack.pop();
+    if(command == undefined) {
+        console.log("none undo command.");
+        return;
+    }
+
+    switch (command.op) {
+        case 'add':
+            var component = command.component; 
+            //逆向循环删除
+            for(var i = state.topoData.components.length - 1; i >= 0; i--) {
+                if(component.identifier == state.topoData.components[i].identifier) {
+                    state.topoData.components.splice(i,1);
+                    break;
+                }                
+            }
+            break;
+        case 'del':
+            
+            break;
+        default:
+            break;
+    }
+
+    state.redoStack.push(command); 
+}
+
+export const redo = function(state) {
+    var command = state.redoStack.pop();
+    if(command == undefined) {
+        console.log("none redo command.");
+        return;
+    }
+    this.commit('topoEditor/execute', command);
+}
+
+
 /**
  * 设置 当前选中的组件-单选
  * @param {*} state 

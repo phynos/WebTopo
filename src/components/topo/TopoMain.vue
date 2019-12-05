@@ -13,7 +13,9 @@
             @mousedown="onLayerMousedown($event)" 
             @keyup.delete="removeItem()"
             @dragover.prevent
-            @drop="onDrop">
+            @drop="onDrop"
+            @keydown.ctrl.90.stop="undo"
+            @keydown.ctrl.89.stop="redo">
             <template v-for="(component,index) in configData.components">
                 <div  
                      :key="index"
@@ -29,6 +31,8 @@
                      @keydown.left.exact.prevent="moveItems('left')"                                     
                      @keydown.ctrl.67="copyItem(index,component)"
                      @keydown.ctrl.86="pasteItem"
+                     @keydown.ctrl.90.stop="undo"
+                     @keydown.ctrl.89.stop="redo"                     
                      :style="{
                             left: component.style.position.x + 'px',
                             top: component.style.position.y + 'px',
@@ -175,6 +179,9 @@ export default {
             'setLayerSelected',
             'setCopyFlag',
             'increaseCopyCount',
+            'execute',
+            'undo',
+            'redo'
         ]),
         ...mapActions('topoEditor',[
             'loadDefaultTopoData'
@@ -373,16 +380,10 @@ export default {
                 component.style.position.y = y; 
             }
             //处理默认值
-            var fuid = uid;
-            component.identifier = fuid();
-            component.name = component.type + this.configData.components.length;
-            component.style.visible = true;
-            component.style.transform = 0;
-            component.style.borderWidth = component.style.borderWidth? component.style.borderWidth : 0;
-            component.style.borderStyle = component.style.borderStyle? component.style.borderStyle : 'solid';
-            component.style.borderColor = component.style.borderColor? component.style.borderColor : '#ccccccff';            
-            //component.style.fontFamily = "Arial";
-            this.configData.components.push(component);                                    
+            this.execute({
+                op: 'add',
+                component: component
+            });                                               
             //默认选中，并点击
             this.clickItem(component,this.configData.components.length - 1);
         },
@@ -458,19 +459,10 @@ export default {
             }
         },
         removeItem(index,component) { //移除组件
-            var keys = [];
-            for(var i = 0; i < this.configData.components.length; i++) {
-                var identifier = this.configData.components[i].identifier;
-                if(this.selectedComponentMap[identifier] != undefined) {
-                    keys.push(i);
-                }
-            }
-            //排序
-            keys.sort((a,b) =>{ return a-b;});
-            //逆向循环删除
-            for(var i = keys.length - 1; i >= 0; i--) {
-                this.configData.components.splice(keys[i],1);
-            }
+            this.execute({
+                op: 'del',
+                index: index
+            });
             this.setLayerSelected(true);  
         },        
         fullScreen() {
