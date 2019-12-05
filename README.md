@@ -2,6 +2,9 @@
 基于vue+quasar的web组态，核心代码基于vue，quasar仅仅是为了方便构建  
 github预览访问如下地址：https://phynos.github.io/WebTopo/dist/spa
 
+## 更新日志
+[更新日志](CHANGELOG.md)
+
 ## 功能清单
 | 功能 | 状态 | 
 | -  | -: | 
