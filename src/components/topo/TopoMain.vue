@@ -14,6 +14,8 @@
             @keyup.delete="removeItem()"
             @dragover.prevent
             @drop="onDrop"
+            @keydown.ctrl.67.stop="copyItem"
+            @keydown.ctrl.86.stop="pasteItem"
             @keydown.ctrl.90.stop="undo"
             @keydown.ctrl.89.stop="redo">
             <template v-for="(component,index) in configData.components">
@@ -29,8 +31,8 @@
                      @keydown.right.exact.prevent="moveItems('right')"
                      @keydown.down.exact.prevent="moveItems('down')"
                      @keydown.left.exact.prevent="moveItems('left')"                                     
-                     @keydown.ctrl.67="copyItem(index,component)"
-                     @keydown.ctrl.86="pasteItem"
+                     @keydown.ctrl.67.stop="copyItem"
+                     @keydown.ctrl.86.stop="pasteItem"
                      @keydown.ctrl.90.stop="undo"
                      @keydown.ctrl.89.stop="redo"                     
                      :style="{
@@ -118,7 +120,7 @@ export default {
             selectedComponentMap: state => state.topoEditor.selectedComponentMap,
             configData: state => state.topoEditor.topoData,
             selectedIsLayer: state => state.topoEditor.selectedIsLayer,
-            copyFlag: state => state.topoEditor.copyFlag,
+            copySrcItems: state => state.topoEditor.copySrcItems,
             copyCount: state => state.topoEditor.copyCount,            
         }),
         layerStyle:function () {
@@ -177,7 +179,7 @@ export default {
             'removeSelectedComponent',
             'clearSelectedComponent',
             'setLayerSelected',
-            'setCopyFlag',
+            'setCopySrcItems',
             'increaseCopyCount',
             'execute',
             'undo',
@@ -299,6 +301,21 @@ export default {
                 this.frameSelectionDiv.height = 0;
                 this.frameSelectionDiv.top = 0;
                 this.frameSelectionDiv.left = 0;
+            } else if(this.flag == 'move') {
+                //鼠标move只是方便用户预览，真正执行应该用命令，所以要先恢复                
+                var dx = event.pageX - this.moveItem.startX;
+                var dy = event.pageY - this.moveItem.startY;
+                for(var key in this.selectedComponentMap) {
+                    var component = this.selectedComponentMap[key];
+                    component.style.position.x = component.style.position.x - dx;
+                    component.style.position.y = component.style.position.y - dy;
+                }                
+                this.execute({
+                    op: 'move',
+                    dx: dx,
+                    dy: dy,
+                    items: this.selectedComponentMap                                        
+                });
             }
             this.flag = '';
         },     
@@ -398,11 +415,12 @@ export default {
             } else if(direction == 'left') {
                 dx = -1;
             }
-            for(var key in this.selectedComponentMap) {
-                var component = this.selectedComponentMap[key];
-                component.style.position.x = component.style.position.x + dx;
-                component.style.position.y = component.style.position.y + dy;
-            }
+            this.execute({
+                op: 'move',
+                dx: dx,
+                dy: dy,
+                items: this.selectedComponentMap                                        
+            });
         },
         checkAddComponent(info){
             if(info == null) {
@@ -439,23 +457,20 @@ export default {
                 //this.clickItem(component,index);
             }                       
         },
-        copyItem(index,component){ // 设定复制源            
-            this.setCopyFlag(true);
+        copyItem(){ // 设定复制源 
+            var items = []; 
+            for(var key in this.selectedComponentMap) {                
+                var item = deepCopy(this.selectedComponentMap[key]); 
+                items.push(item);
+            }          
+            this.setCopySrcItems(items);
         },
         pasteItem() {
-            if(this.copyFlag) {
-                var fuid = uid;
-                for(var key in this.selectedComponentMap) {
-                    var s = this.selectedComponentMap[key];
-                    var component = deepCopy(s);           
-                    component.identifier = fuid();
-                    component.name = component.type + this.configData.components.length;      
-                    component.style.visible = true;
-                    component.style.position.x = component.style.position.x + 25 * (this.copyCount + 1);
-                    component.style.position.y = component.style.position.y + 25 * (this.copyCount + 1);
-                    this.configData.components.push(component); 
-                }
-                this.increaseCopyCount();
+            if(this.copySrcItems && this.copySrcItems.length > 0) {                
+                this.execute({
+                    op: 'copy-add',
+                    items: this.copySrcItems,
+                });
             }
         },
         removeItem(index,component) { //移除组件

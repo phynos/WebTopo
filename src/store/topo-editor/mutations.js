@@ -3,9 +3,17 @@ import Vue from 'vue';
 import {
     uid
 } from 'quasar';
+import {
+    deepCopy
+} from "@/assets/libs/utils";
 
-
-export const execute = (state,command) => {
+/**
+ * 执行编辑命令
+ * 注意：这里不要用箭头函数，防止this无法调用
+ * @param {*} state 
+ * @param {*} command 命令对象
+ */
+export const execute = function(state,command) {
     //暂时不做参数校验
     //在这里分发命令--这里暂时先用switch分发，应该用表格分发
     switch (command.op) {
@@ -38,9 +46,32 @@ export const execute = (state,command) => {
             }            
             break;
         case 'move':
-
+            var dx = command.dx, dy = command.dy;
+            for(var key in command.items) {
+                var component = command.items[key];
+                component.style.position.x = component.style.position.x + dx;
+                component.style.position.y = component.style.position.y + dy;
+            }
+            break;
+        case 'copy-add': 
+            this.commit('topoEditor/clearSelectedComponent');
+            var fuid = uid;            
+            for (let i = 0; i < command.items.length; i++) {
+                var t = command.items[i];
+                var component = deepCopy(t);
+                component.identifier = fuid();
+                component.name = component.type + state.topoData.components.length;      
+                component.style.visible = true;
+                //这里应该根据选中的的组件确定位置-暂时用个数
+                component.style.position.x = component.style.position.x + 25 * (state.copyCount + 1);
+                component.style.position.y = component.style.position.y + 25 * (state.copyCount + 1);
+                state.topoData.components.push(component);
+                this.commit('topoEditor/addSelectedComponent', component);     
+                this.commit('topoEditor/increaseCopyCount');                
+            }
             break;
         default:
+            console.warn("不支持的命令.");
             break;
     }
     //记录操作
@@ -69,7 +100,15 @@ export const undo = (state) => {
             
             break;
         case 'move':
-            
+            var dx = command.dx, dy = command.dy;
+            for(var key in state.selectedComponentMap) {
+                var component = state.selectedComponentMap[key];
+                component.style.position.x = component.style.position.x - dx;
+                component.style.position.y = component.style.position.y - dy;
+            }
+            break;
+        case 'copy-add':
+            console.log('undo暂不支持：copy-add');
             break;
         default:
             break;
@@ -172,8 +211,8 @@ export const setLayerSelected = (state,selected) => {
     state.selectedIsLayer = selected;
 }
 
-export const setCopyFlag = (state,flag) => {
-    state.copyFlag = flag;
+export const setCopySrcItems = (state,items) => {
+    state.copySrcItems = items;
     state.copyCount = 0;
 }
 export const increaseCopyCount = (state) => {
