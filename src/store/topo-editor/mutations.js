@@ -68,6 +68,9 @@ export const undo = (state) => {
         case 'del':
             
             break;
+        case 'move':
+            
+            break;
         default:
             break;
     }
