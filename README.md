@@ -5,6 +5,12 @@ github预览访问如下地址：https://phynos.github.io/WebTopo/dist/spa
 ## 更新日志
 [更新日志](CHANGELOG.md)
 
+## 后续重点TODO
+- 完善撤销和恢复
+- 折线箭头（思路：增加控制锚点作为转折点）
+- 属性元数据设计和属性编辑UI生成（思路：仿造winform的属性面板）
+
+
 ## 功能清单
 | 功能 | 状态 | 
 | -  | -: | 
