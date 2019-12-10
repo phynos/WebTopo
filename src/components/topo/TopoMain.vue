@@ -47,7 +47,7 @@
                             borderColor: component.style.borderColor,
                             transform: component.style.transform? `rotate(${component.style.transform}deg)`:'rotate(0deg)',
                         }">
-                    <component v-bind:is="parseView(component)" :detail="component" :editMode="true" :ref="'comp' + index"/>                                    
+                    <component v-bind:is="parseView(component)" :detail="component" :editMode="true" :selected="selectedComponentMap[component.identifier]" :ref="'comp' + index"/>                                    
                     <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lt')" v-show="selectedComponentMap[component.identifier]" class="resize-left-top"></div>
                     <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lc')" v-show="selectedComponentMap[component.identifier]" class="resize-left-center"></div>
                     <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lb')" v-show="selectedComponentMap[component.identifier]" class="resize-left-bottom"></div>

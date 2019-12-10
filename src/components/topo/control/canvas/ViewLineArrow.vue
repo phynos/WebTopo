@@ -1,18 +1,19 @@
 <template>
-<div class="view-line-arrow" @mousemove.stop="onMousemove($event)" @mouseup="onMouseUp($event)">
+<div class="view-line-arrow" @mousemove="onMousemove($event)" @mouseup="onMouseUp($event)">
     <canvas ref="elCanvas" :width="detail.style.position.w" :height="detail.style.position.h">
         Your browser does not support the HTML5 canvas tag.
     </canvas>
 
-    <template v-for="(pass,index) in passBy">
-        <div :key="index" class="passby" @mousedown.stop="aroowPassDown(pass,$event,index)" :style="{
-                            left: pass.x + 'px',
-                            top: pass.y + 'px',                           
+    <template v-if="editMode && selected">
+        <template v-for="(pass,index) in points">
+            <div :key="index" class="passby" @mousedown.stop="aroowPassDown(pass,$event,index)" :style="{
+                            left: pass.x - 5 + 'px',
+                            top: pass.y - 5 + 'px',                           
                         }">
 
-        </div>
+            </div>
+        </template>
     </template>
-
 </div>
 </template>
 
@@ -27,7 +28,7 @@ export default {
             lineWidth: 2,
             flag: false,
             passItem: {},
-            passBy: [], //控制点（包含起始和终点）
+            points: [], //控制点（包含起始和终点）
             FACTOR_H: 5, //箭头 水平高度倍数
             FACTOR_V: 4, //箭头 垂直长度倍数
         }
@@ -46,12 +47,12 @@ export default {
             var lineWidth = this.lineWidth,
                 color = this.getForeColor();
             ctx.beginPath();
-            for (let index = 0; index < this.passBy.length; index++) {
-                const begin = this.passBy[index],
-                    end = this.passBy[index + 1];
+            for (let index = 0; index < this.points.length; index++) {
+                const begin = this.points[index],
+                    end = this.points[index + 1];
                 ctx.moveTo(begin.x, begin.y);
                 ctx.lineTo(end.x, end.y);
-                if (index == this.passBy.length - 2)
+                if (index == this.points.length - 2)
                     break;
             }
             ctx.lineWidth = lineWidth; //设置线宽状态
@@ -66,7 +67,7 @@ export default {
             var ctx = el.getContext("2d");
             ctx.clearRect(0, 0, w, h);
             this.drawLine(ctx);
-            this.drawArrow(ctx, this.passBy[this.passBy.length - 1].x, this.passBy[this.passBy.length - 1].y, this.lineWidth, this.getForeColor());
+            this.drawArrow(ctx, this.points[this.points.length - 1].x, this.points[this.points.length - 1].y, this.lineWidth, this.getForeColor());
 
         },
         onResize() {
@@ -96,36 +97,14 @@ export default {
         }
     },
     mounted() {
-        var w = this.detail.style.position.w;
-        var h = this.detail.style.position.h;
-        var x1 = 0,
-            y1 = h / 2,
-            x2 = w,
-            y2 = h / 2;
         var lineWidth = this.detail.style.lineWidth;
         if (lineWidth == undefined) {
             lineWidth = 2;
         } else if (typeof lineWidth == 'string') {
             lineWidth = parseInt(lineWidth);
         }
-        this.passBy = [];
-        this.passBy.push({
-            x: x1,
-            y: y1
-        });
-        //增加2个中间节点，应该可以动态控制，这里暂时写死
-        this.passBy.push({
-            x: 10,
-            y: 10
-        });
-        this.passBy.push({
-            x: 30,
-            y: 30
-        });
-        this.passBy.push({
-            x: x2 - this.FACTOR_H * lineWidth,
-            y: y2
-        });
+        this.points = this.detail.style.points;
+        //增加2个中间节点，应该可以动态控制，这里暂时写死    
         this.onResize();
     }
 }
@@ -142,9 +121,7 @@ export default {
         height: 10px;
         width: 10px;
         background-color: white;
-        border: 1px solid #0cf;
-        left: -5px;
-        top: -5px;
+        border: 1px solid rgb(34, 14, 223);
         cursor: move;
     }
 }

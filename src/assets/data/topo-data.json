@@ -155,7 +155,7 @@
       "action": [],
       "dataBind": { "sn": "", "title": "", "biz": "", "queryParam": {} },
       "style": {
-        "position": { "x": 68, "y": 367, "w": 300, "h": 30 },
+        "position": { "x": 68, "y": 367, "w": 300, "h": 80 },
         "backColor": "transparent",
         "foreColor": "grey",
         "zIndex": 1,
@@ -165,6 +165,28 @@
         "borderWidth": 0,
         "borderStyle": "solid",
         "borderColor": "#ccccccff",
+        "points": [
+          {
+              "x": 0,
+              "y": 0
+          },
+          {
+              "x": 0,
+              "y": 80
+          },
+          {
+              "x": 150,
+              "y": 80
+          },
+          {
+              "x": 150,
+              "y": 40
+          },
+          {
+              "x": 300,
+              "y": 40
+          }
+      ],
         "temp": { "position": { "x": 235, "y": 420 } }
       },
       "identifier": "38ba8693-04c0-2021-dcde-6520757d1690",

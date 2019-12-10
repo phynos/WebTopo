@@ -189,13 +189,35 @@
                         "x": 100,
                         "y": 100,
                         "w": 300,
-                        "h": 30
+                        "h": 80
                     },
                     "backColor": "transparent",
                     "foreColor": "grey",
                     "zIndex": 1,
                     "transform": 0,
-                    "lineWidth": 2
+                    "lineWidth": 2,
+                    "points": [
+                        {
+                            "x": 0,
+                            "y": 0
+                        },
+                        {
+                            "x": 0,
+                            "y": 80
+                        },
+                        {
+                            "x": 150,
+                            "y": 80
+                        },
+                        {
+                            "x": 150,
+                            "y": 40
+                        },
+                        {
+                            "x": 300,
+                            "y": 40
+                        }
+                    ]
                 }
             }
         }        

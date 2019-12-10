@@ -1,8 +1,13 @@
 <script>
+
 export default {
     name: 'View',
     props: {
         editMode: {
+            type: Boolean,
+            default: false
+        },
+        selected: {
             type: Boolean,
             default: false
         },
