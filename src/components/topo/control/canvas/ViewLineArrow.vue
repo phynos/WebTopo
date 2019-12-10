@@ -113,6 +113,7 @@ export default {
             x: x1,
             y: y1
         });
+        //增加2个中间节点，应该可以动态控制，这里暂时写死
         this.passBy.push({
             x: 10,
             y: 10
