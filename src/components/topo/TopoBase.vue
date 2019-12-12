@@ -8,6 +8,7 @@ import ViewCircular from './control/canvas/ViewCircular';
 import ViewLine from './control/canvas/ViewLine';
 import ViewLineArrow from './control/canvas/ViewLineArrow';
 import ViewLineWave from './control/canvas/ViewLineWave';
+import ViewBizierCurveArrow from './control/canvas/ViewBizierCurveArrow';
 import ViewRect from './control/canvas/ViewRect';
 import ViewTriangle from './control/canvas/ViewTriangle';
 
@@ -27,6 +28,7 @@ export default {
         ViewLine,
         ViewLineArrow,
         ViewLineWave,
+        ViewBizierCurveArrow,
         ViewRect,
         ViewTriangle,
         ViewChart,

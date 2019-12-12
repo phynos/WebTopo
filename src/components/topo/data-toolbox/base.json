@@ -220,6 +220,52 @@
                     ]
                 }
             }
+        },
+        {
+            "text": "贝塞尔曲线",
+            "icon": "arrow_forward",
+            "isFontIcon": true,
+            "info": {
+                "type": "bizier-curve-arrow",
+                "action": [],
+                "dataBind": {
+                    "sn": "",
+                    "title": "",
+                    "biz": "",
+                    "queryParam": {}
+                },
+                "style": {
+                    "position": {
+                        "x": 100,
+                        "y": 100,
+                        "w": 300,
+                        "h": 80
+                    },
+                    "backColor": "transparent",
+                    "foreColor": "grey",
+                    "zIndex": 1,
+                    "transform": 0,
+                    "lineWidth": 2,
+                    "points": [
+                        {
+                            "x": 20,
+                            "y": 20
+                        },
+                        {
+                            "x": 20,
+                            "y": 100
+                        },
+                        {
+                            "x": 200,
+                            "y": 100
+                        },
+                        {
+                            "x": 200,
+                            "y": 20
+                        }
+                    ]
+                }
+            }
         }        
     ]
 }
