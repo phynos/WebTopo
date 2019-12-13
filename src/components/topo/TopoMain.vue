@@ -47,7 +47,7 @@
                             borderColor: component.style.borderColor,
                             transform: component.style.transform? `rotate(${component.style.transform}deg)`:'rotate(0deg)',
                         }">
-                    <component v-bind:is="parseView(component)" :detail="component" :editMode="true" :selected="selectedComponentMap[component.identifier]" :ref="'comp' + index"/>                                    
+                    <component v-bind:is="parseView(component)" :detail="component" :editMode="true" :selected="selectedComponentMap[component.identifier]?true:false" :ref="'comp' + index"/>                                    
                     <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lt')" v-show="selectedComponentMap[component.identifier]" class="resize-left-top"></div>
                     <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lc')" v-show="selectedComponentMap[component.identifier]" class="resize-left-center"></div>
                     <div @mousedown.stop="resizeMousedown(component,$event,index,'resize-lb')" v-show="selectedComponentMap[component.identifier]" class="resize-left-bottom"></div>
@@ -407,13 +407,13 @@ export default {
         moveItems(direction){
             var dx = 0,dy = 0;
             if(direction == 'up') {
-                dy = -1;
+                dy = -5;
             } else if(direction == 'right') {
-                dx = 1;
+                dx = 5;
             } else if(direction == 'down') {
-                dy = 1;
+                dy = 5;
             } else if(direction == 'left') {
-                dx = -1;
+                dx = -5;
             }
             this.execute({
                 op: 'move',

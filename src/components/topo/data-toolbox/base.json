@@ -1,225 +1,340 @@
 {
-    "title": "基本",
-    "icon": "payment",
-    "opened": false,
-    "items": [
-        {
-            "text": "Text",
-            "icon": "text_fields",
-            "isFontIcon": true,
-            "info": {
-                "type": "text",
-                "action": [],
-                "dataBind": {
-                    "sn": "",
-                    "title": "",
-                    "biz": "",
-                    "queryParam": {}
-                },
-                "style": {
-                    "position": {
-                        "x": 0,
-                        "y": 0,
-                        "w": 100,
-                        "h": 30
-                    },
-                    "backColor": "transparent",
-                    "foreColor": "#000000",
-                    "zIndex": 1,
-                    "transform": 0,
-                    "text": "Test",
-                    "textAlign": "center",
-                    "fontSize": 14,
-                    "fontFamily": "Arial"
-                }
-            }
+  "title": "基本",
+  "icon": "payment",
+  "opened": false,
+  "items": [{
+      "text": "Text",
+      "icon": "text_fields",
+      "isFontIcon": true,
+      "info": {
+        "type": "text",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
         },
-        {
-            "text": "Image",
-            "icon": "photo_size_select_actual",
-            "isFontIcon": true,
-            "info": {
-                "type": "image",
-                "action": [],
-                "dataBind": {
-                    "sn": "",
-                    "title": "",
-                    "biz": "",
-                    "queryParam": {}
-                },
-                "style": {
-                    "position": {
-                        "x": 0,
-                        "y": 0,
-                        "w": 200,
-                        "h": 200
-                    },
-                    "backColor": "transparent",
-                    "zIndex": 1,
-                    "transform": 0,
-                    "url": ""
-                }
-            }
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 30
+          },
+          "backColor": "transparent",
+          "foreColor": "#000000",
+          "zIndex": 1,
+          "transform": 0,
+          "text": "Test",
+          "textAlign": "center",
+          "fontSize": 14,
+          "fontFamily": "Arial"
+        }
+      }
+    },
+    {
+      "text": "Image",
+      "icon": "photo_size_select_actual",
+      "isFontIcon": true,
+      "info": {
+        "type": "image",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
         },
-        {
-            "text": "Triangle",
-            "icon": "change_history",
-            "isFontIcon": true,
-            "info": {
-                "type": "triangle",
-                "action": [],
-                "dataBind": {
-                    "sn": "",
-                    "title": "",
-                    "biz": "",
-                    "queryParam": {}
-                },
-                "style": {
-                    "position": {
-                        "x": 0,
-                        "y": 0,
-                        "w": 200,
-                        "h": 200
-                    },
-                    "backColor": "transparent",
-                    "foreColor": "grey",
-                    "zIndex": 1,
-                    "transform": 0
-                }
-            }
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 200,
+            "h": 200
+          },
+          "backColor": "transparent",
+          "zIndex": 1,
+          "transform": 0,
+          "url": ""
+        }
+      }
+    },
+    {
+      "text": "Triangle",
+      "icon": "change_history",
+      "isFontIcon": true,
+      "info": {
+        "type": "triangle",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
         },
-        {
-            "text": "Rect",
-            "icon": "stop",
-            "isFontIcon": true,
-            "info": {
-                "type": "rect",
-                "action": [],
-                "dataBind": {
-                    "sn": "",
-                    "title": "",
-                    "biz": "",
-                    "queryParam": {}
-                },
-                "style": {
-                    "position": {
-                        "x": 0,
-                        "y": 0,
-                        "w": 100,
-                        "h": 200
-                    },
-                    "backColor": "transparent",
-                    "foreColor": "grey",
-                    "zIndex": 1,
-                    "transform": 0,
-                    "radius": 0
-                }
-            }
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 200,
+            "h": 200
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0
+        }
+      }
+    },
+    {
+      "text": "Rect",
+      "icon": "stop",
+      "isFontIcon": true,
+      "info": {
+        "type": "rect",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
         },
-        {
-            "text": "Circular",
-            "icon": "fiber_manual_record",
-            "isFontIcon": true,
-            "info": {
-                "type": "circular",
-                "action": [],
-                "dataBind": {
-                    "sn": "",
-                    "title": "",
-                    "biz": "",
-                    "queryParam": {}
-                },
-                "style": {
-                    "position": {
-                        "x": 0,
-                        "y": 0,
-                        "w": 200,
-                        "h": 200
-                    },
-                    "backColor": "transparent",
-                    "foreColor": "grey",
-                    "zIndex": 1,
-                    "transform": 0
-                }
-            }
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 200
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0,
+          "radius": 0
+        }
+      }
+    },
+    {
+      "text": "Circular",
+      "icon": "fiber_manual_record",
+      "isFontIcon": true,
+      "info": {
+        "type": "circular",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
         },
-        {
-            "text": "Line",
-            "icon": "remove",
-            "isFontIcon": true,
-            "info": {
-                "type": "line",
-                "action": [],
-                "dataBind": {
-                    "sn": "",
-                    "title": "",
-                    "biz": "",
-                    "queryParam": {}
-                },
-                "style": {
-                    "position": {
-                        "x": 100,
-                        "y": 100,
-                        "w": 300,
-                        "h": 30
-                    },
-                    "backColor": "transparent",
-                    "foreColor": "grey",
-                    "zIndex": 1,
-                    "transform": 0,
-                    "lineWidth": 2
-                }
-            }
+        "style": {
+          "position": {
+            "x": 0,
+            "y": 0,
+            "w": 200,
+            "h": 200
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0
+        }
+      }
+    },
+    {
+      "text": "Line",
+      "icon": "remove",
+      "isFontIcon": true,
+      "info": {
+        "type": "line",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
         },
-        {
-            "text": "Line-Arrow",
-            "icon": "arrow_forward",
-            "isFontIcon": true,
-            "info": {
-                "type": "line-arrow",
-                "action": [],
-                "dataBind": {
-                    "sn": "",
-                    "title": "",
-                    "biz": "",
-                    "queryParam": {}
-                },
-                "style": {
-                    "position": {
-                        "x": 100,
-                        "y": 100,
-                        "w": 300,
-                        "h": 80
-                    },
-                    "backColor": "transparent",
-                    "foreColor": "grey",
-                    "zIndex": 1,
-                    "transform": 0,
-                    "lineWidth": 2,
-                    "points": [
-                        {
-                            "x": 0,
-                            "y": 0
-                        },
-                        {
-                            "x": 0,
-                            "y": 80
-                        },
-                        {
-                            "x": 150,
-                            "y": 80
-                        },
-                        {
-                            "x": 150,
-                            "y": 40
-                        },
-                        {
-                            "x": 300,
-                            "y": 40
-                        }
-                    ]
-                }
+        "style": {
+          "position": {
+            "x": 100,
+            "y": 100,
+            "w": 300,
+            "h": 30
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0,
+          "lineWidth": 2
+        }
+      }
+    },
+    {
+      "text": "Line-Arrow",
+      "icon": "arrow_forward",
+      "isFontIcon": true,
+      "info": {
+        "type": "line-arrow",
+        "action": [],
+        "dataBind": {
+          "sn": "",
+          "title": "",
+          "biz": "",
+          "queryParam": {}
+        },
+        "style": {
+          "position": {
+            "x": 100,
+            "y": 100,
+            "w": 300,
+            "h": 80
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0,
+          "lineWidth": 2,
+          "points": [{
+              "x": 0,
+              "y": 0
+            },
+            {
+              "x": 0,
+              "y": 80
+            },
+            {
+              "x": 150,
+              "y": 80
+            },
+            {
+              "x": 150,
+              "y": 40
+            },
+            {
+              "x": 300,
+              "y": 40
             }
-        }        
-    ]
+          ]
+        }
+      }
+    },
+    {
+      "text": "贝塞尔曲线",
+      "icon": "arrow_forward",
+      "isFontIcon": true,
+      "info": {
+        "type": "bizier-curve-arrow",
+        "action": [],
+        "dataBind": {},
+        "style": {
+          "position": {
+            "x": 100,
+            "y": 100,
+            "w": 300,
+            "h": 80
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0,
+          "lineWidth": 2,
+          "points": [{
+              "x": 20,
+              "y": 20
+            },
+            {
+              "x": 20,
+              "y": 100
+            },
+            {
+              "x": 200,
+              "y": 100
+            },
+            {
+              "x": 200,
+              "y": 20
+            }
+          ]
+        }
+      }
+    },
+    {
+      "text": "虚线",
+      "icon": "icon-xuxian",
+      "isFontIcon": 1,
+      "info": {
+        "type": "dashed",
+        "action": [],
+        "dataBind": {},
+        "style": {
+          "position": {
+            "x": 100,
+            "y": 100,
+            "w": 200,
+            "h": 30
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0,
+          "lineWidth": 2,
+          "setLineDash": "8, 5",
+          "dotSpace": 10,
+          "dotWidth": 5
+        }
+      }
+    },
+    {
+      "text": "竖线",
+      "icon": "icon-weibiaoti--",
+      "isFontIcon": 1,
+      "info": {
+        "type": "line",
+        "direction": "vertical",
+        "action": [],
+        "dataBind": {},
+        "style": {
+          "position": {
+            "x": 100,
+            "y": 100,
+            "w": 30,
+            "h": 200
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0,
+          "lineWidth": 2
+        }
+      }
+    },
+    {
+      "text": "竖虚线",
+      "icon": "icon-icon-test",
+      "isFontIcon": 1,
+      "info": {
+        "type": "dashed",
+        "direction": "vertical",
+        "action": [],
+        "dataBind": {},
+        "style": {
+          "position": {
+            "x": 100,
+            "y": 100,
+            "w": 30,
+            "h": 200
+          },
+          "backColor": "transparent",
+          "foreColor": "grey",
+          "zIndex": 1,
+          "transform": 0,
+          "lineWidth": 2,
+          "setLineDash": "8, 5",
+          "dotSpace": 10,
+          "dotWidth": 5
+        }
+      }
+    }
+  ]
 }
