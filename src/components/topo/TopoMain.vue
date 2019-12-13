@@ -20,7 +20,7 @@
             @keydown.ctrl.89.stop="redo">
             <template v-for="(component,index) in configData.components">
                 <div  
-                     :key="index"
+                     :key="component.identifier"
                      tabindex="0"
                      class="topo-layer-view"
                      :class="{'topo-layer-view-selected': selectedComponentMap[component.identifier] == undefined? false:true }" 
@@ -522,11 +522,17 @@ export default {
         position: absolute;
         transform-origin: left top;
         overflow: auto;
-        background-color: white;
-        background-clip: padding-box;
-        background-origin: padding-box;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        // background-color: white;
+        // background-clip: padding-box;
+        // background-origin: padding-box;
+        // background-repeat: no-repeat;
+        // background-size: 100% 100%;
+
+        background-image: 
+        linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), 
+        linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc); 
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 10px;
 
         .topo-frame-selection {
             background-color: #8787e7;
