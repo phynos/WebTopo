@@ -18,24 +18,26 @@ import ViewChartGauge from './control/chart/ViewChartGauge';
 
 import ViewSvgImage from './control/svg/ViewSvgImage';
 import ViewSvgStatic from './control/svg/ViewSvgStatic';
+import ViewDashed from "./control/canvas/ViewDashed";
 
 export default {
-    name: 'TopoBase',
-    components: {
-        ViewText,
-        ViewImage,
-        ViewCircular,
-        ViewLine,
-        ViewLineArrow,
-        ViewLineWave,
-        ViewBizierCurveArrow,
-        ViewRect,
-        ViewTriangle,
-        ViewChart,
-        ViewChartPie,
-        ViewChartGauge,
-        ViewSvgImage,
-        ViewSvgStatic        
-    },
+  name: 'TopoBase',
+  components: {
+    ViewText,
+    ViewImage,
+    ViewCircular,
+    ViewLine,
+    ViewLineArrow,
+    ViewLineWave,
+    ViewBizierCurveArrow,
+    ViewRect,
+    ViewTriangle,
+    ViewChart,
+    ViewChartPie,
+    ViewChartGauge,
+    ViewSvgImage,
+    ViewSvgStatic,
+    ViewDashed
+  },
 }
 </script>
