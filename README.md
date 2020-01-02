@@ -119,9 +119,9 @@ $ quasar dev -m cordova
 $ quasar dev -m electron
 
 注意：Electron应用等请参考官网配置相应的开发环境  
-安装yarn：npm install -g yarn
-设置yarn镜像：yarn config set registry http://registry.npm.taobao.org/
-安装electron：yarn add --dev electron@^7.0.0 electron-debug@^3.0.0 electron-devtools-installer@^2.2.4 devtron@^1.4.0
+安装yarn：npm install -g yarn  
+设置yarn镜像：yarn config set registry http://registry.npm.taobao.org/  
+安装electron：yarn add --dev electron@^7.0.0 electron-debug@^3.0.0 electron-devtools-installer@^2.2.4 devtron@^1.4.0  
 安装环境：cnpm install --global windows-build-tools  
 
 在打包过程中会从github下载文件，如果下载不了，可以直接百度网盘下载，网盘地址：
