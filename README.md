@@ -118,13 +118,29 @@ $ quasar dev -m cordova
 ### Electron应用
 $ quasar dev -m electron
 
-注意：Electron应用等请参考官网配置相应的开发环境
+注意：Electron应用等请参考官网配置相应的开发环境  
+安装yarn：npm install -g yarn
+设置yarn镜像：yarn config set registry http://registry.npm.taobao.org/
+安装electron：yarn add --dev electron@^7.0.0 electron-debug@^3.0.0 electron-devtools-installer@^2.2.4 devtron@^1.4.0
+安装环境：cnpm install --global windows-build-tools  
+
+在打包过程中会从github下载文件，如果下载不了，可以直接百度网盘下载，网盘地址：
+https://pan.baidu.com/s/1RiHHBDJMeiXLubaFzryTAw
+
 
 ## 如何打包
 1. 编辑quasar.conf.js下的publicPath，修改为实际的名称
 2. 去编译后(使用命令quasar build)的dist文件夹将文件拷贝到web服务器即可
 3. 目前publicPath默认为WebTopo，所以构建后访问http://127.0.0.1/WebTopo/即可  
 注意：由于VUE使用history模式，使用nginx等服务器需要解决路径404问题（本项目只有2个url）
+
+## 构建命令参考
+### build for production
+quasar build
+
+### Electron App
+quasar build -m electron
+
 
 
 ## 运行截图

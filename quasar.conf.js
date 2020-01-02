@@ -150,7 +150,7 @@ module.exports = function (ctx) {
       // id: 'org.cordova.quasar.app'
     },
     electron: {
-      // bundler: 'builder', // or 'packager'
+      bundler: 'builder', // 'packager' or 'builder'
       extendWebpack (cfg) {
         // do something with Electron process Webpack cfg
       },
@@ -167,6 +167,7 @@ module.exports = function (ctx) {
         // win32metadata: { ... }
       },
       builder: {
+        productName: APP_INFO.PKG_NAME,
         // https://www.electron.build/configuration/configuration
 
         // appId: 'quasar-app'
