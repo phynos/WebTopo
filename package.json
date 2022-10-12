@@ -20,7 +20,7 @@
     "moment": "^2.24.0",
     "quasar": "^1.5.11",
     "vue-i18n": "^7.3.3",
-    "x2js": "^3.3.1"
+    "x2js": "^3.4.3"
   },
   "devDependencies": {
     "@quasar/app": "^1.4.3",
