@@ -1,3 +1,7 @@
+## 特别说明
+
+该项目已经不再维护，且项目开发时间较早，这么多年已经有了很多更优秀的类似项目，请自行搜索选择
+
 ## WEB组态
 基于vue+quasar的web组态，核心代码基于vue，quasar仅仅是为了方便构建  
 github预览地址：https://phynos.github.io/WebTopo/dist/spa
@@ -145,4 +149,5 @@ quasar build -m electron
 
 ## 运行截图
 ![avatar](/doc/shot.png)
+
 
