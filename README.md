@@ -1,6 +1,5 @@
 ## WEB组态
 基于vue+quasar的web组态，核心代码基于vue，quasar仅仅是为了方便构建  
-预览地址：http://42.192.126.212/WebTopo/dist/spa/  
 github预览地址：https://phynos.github.io/WebTopo/dist/spa
 
 ## 更新日志
@@ -146,3 +145,4 @@ quasar build -m electron
 
 ## 运行截图
 ![avatar](/doc/shot.png)
+
